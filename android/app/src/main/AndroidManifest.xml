@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="jpt_app"
+        android:label="Jpt"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

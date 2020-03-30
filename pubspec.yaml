@@ -25,7 +25,7 @@ dependencies:
 
 
   cupertino_icons: ^0.1.2
-  get_it: ^2.0.1
+  get_it: ^4.0.1
   flutter_bloc: ^0.21.0
   equatable: ^0.4.0
   dartz: ^0.8.6
