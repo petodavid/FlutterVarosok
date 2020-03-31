@@ -34,6 +34,7 @@ dependencies:
   shared_preferences: ^0.5.3+4
   font_awesome_flutter: ^8.7.0
   lottie: ^0.3.2
+  qr_code_scanner: ^0.0.12
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
   assets:
     - lib/core/localization/lang/en.json
     - lib/core/localization/lang/hu.json
+    - lib/core/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

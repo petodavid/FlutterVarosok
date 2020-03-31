@@ -1,4 +1,8 @@
 {
   "content": "Tartalom",
-  "logIn": "Bejelentkezés"
+  "logIn": "Bejelentkezés",
+  "email": "Email",
+  "password": "Jelszó",
+  "back": "Vissza",
+  "qr": "QR kód olvasás"
 }

@@ -1,4 +1,9 @@
 {
   "content": "Content",
-  "logIn": "LogIn"
+  "logIn": "LogIn",
+  "email": "Email",
+  "password": "Password",
+  "back": "Back",
+  "qr": "QR code scanning"
+
 }

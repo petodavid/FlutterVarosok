@@ -7,14 +7,14 @@ import 'package:jpt_app/features/app/presentation/pages/home_list_page/widgets/a
 import 'package:jpt_app/features/app/presentation/pages/home_list_page/widgets/floating_action_qr_button.dart';
 import 'package:jpt_app/injection_container.dart';
 
-class HomeList extends StatelessWidget {
+class HomeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: homeListAppBar(context),
       floatingActionButton: Padding(
         padding: EdgeInsets.all(10),
-        child: qrScannerButton(),
+        child: qrScannerButton(context),
       ),
       body: buildBody(),
     );
@@ -24,6 +24,5 @@ class HomeList extends StatelessWidget {
 BlocProvider<AppBloc> buildBody() {
   return BlocProvider(
     builder: (_) => sl<AppBloc>(),
-    child: ListView(),
   );
 }
