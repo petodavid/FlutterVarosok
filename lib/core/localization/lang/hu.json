@@ -4,5 +4,6 @@
   "email": "Email",
   "password": "Jelszó",
   "back": "Vissza",
-  "qr": "QR kód olvasás"
+  "qr": "QR kód olvasás",
+  "settings": "Beállítások"
 }

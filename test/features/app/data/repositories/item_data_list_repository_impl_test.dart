@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jpt_app/core/error/exceptions.dart';
 import 'package:jpt_app/core/error/failures.dart';
-import 'package:jpt_app/core/network//network_info.dart';
+import 'package:jpt_app/core/network/network_info.dart';
 import 'package:jpt_app/features/app/data/datasources/item_data_list_local_data_source.dart';
 import 'package:jpt_app/features/app/data/datasources/item_data_list_remote_data_source.dart';
 import 'package:jpt_app/features/app/data/models/item_data_list_model.dart';

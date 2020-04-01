@@ -52,10 +52,6 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     );
   }
 
-  void _goBack() {
-    Navigator.pop(context);
-  }
-
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {

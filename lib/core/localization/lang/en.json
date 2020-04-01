@@ -4,6 +4,7 @@
   "email": "Email",
   "password": "Password",
   "back": "Back",
-  "qr": "QR code scanning"
+  "qr": "QR code scanning",
+  "settings": "Settings"
 
 }
