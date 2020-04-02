@@ -12,7 +12,7 @@ String itemDatalistModeToJson(ItemDataListModel data) =>
 class ItemDataListModel extends ItemDataList {
   List<ItemDataModel> itemDataList;
   ItemDataListModel({@required this.itemDataList})
-      : super(listData: itemDataList);
+      : super(dataList: itemDataList);
 }
 
 class ItemDataModel extends ItemData {

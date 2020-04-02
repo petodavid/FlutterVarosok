@@ -21,20 +21,19 @@ void main() {
   test('initialState should be Empty', () {
     expect(bloc.initialState, equals(Empty()));
   });
-
   group('GetTriviaForRandomNumber', () {
     final pdfLinks = [PdfLink(title: 'title', link: 'links')];
     final testHtml = [HtmlTag(title: 'tags', html: 'htmlCode')];
     final itemData = [
       ItemData(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
     ];
-    final tItemDataList = ItemDataList(listData: itemData);
+    final tItemDataList = ItemDataList(dataList: itemData);
     test(
       'should get data',
       () async {
         when(mockGetItemDataList(any))
             .thenAnswer((_) async => Right(tItemDataList));
-        bloc.dispatch(GetDataListForItems());
+        bloc.add(GetDataListForItems());
         await untilCalled(mockGetItemDataList(any));
         verify(mockGetItemDataList(NoParams()));
       },

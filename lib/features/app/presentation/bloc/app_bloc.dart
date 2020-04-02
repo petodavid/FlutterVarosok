@@ -9,7 +9,10 @@ import 'bloc.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final GetItemDataList getItemDataList;
-  AppBloc({@required this.getItemDataList});
+  AppBloc({
+    @required GetItemDataList getItemDataList,
+  })  : assert(getItemDataList != null),
+        getItemDataList = getItemDataList;
 
   @override
   AppState get initialState => Empty();
@@ -20,13 +23,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async* {
     if (event is GetDataListForItems) {
       yield Loading();
-      final failureOrTrivia = await getItemDataList(
-        NoParams(),
-      );
-      yield failureOrTrivia.fold(
-        (failure) => Error(message: _mapFailureToMessage(failure)),
-        (itemDataList) => Loaded(itemDataList: itemDataList),
-      );
+      final failureOrTrivia = await getItemDataList(NoParams());
+      yield* _eitherLoadedOrErrorState(failureOrTrivia);
     }
   }
 }

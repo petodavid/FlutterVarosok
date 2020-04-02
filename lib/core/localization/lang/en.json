@@ -5,6 +5,8 @@
   "password": "Password",
   "back": "Back",
   "qr": "QR code scanning",
-  "settings": "Settings"
-
+  "settings": "Settings",
+  "pdfFile" : "Pdf File",
+  "webPage": "Web Page",
+  "cancel": "Cancel"
 }

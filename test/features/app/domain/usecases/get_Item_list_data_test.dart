@@ -22,7 +22,7 @@ void main() {
   final itemData = [
     ItemData(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
   ];
-  final itemDataList = ItemDataList(listData: itemData);
+  final itemDataList = ItemDataList(dataList: itemData);
 
   test('should get the list data from the repository', () async {
     when(mockItemListDataRepository.getItemListData())

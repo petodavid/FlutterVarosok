@@ -2,10 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 class ItemDataList extends Equatable {
-  final List<ItemData> listData;
+  final List<ItemData> dataList;
   ItemDataList({
-    @required this.listData,
-  }) : super([listData]);
+    @required this.dataList,
+  });
+
+  @override
+  List<Object> get props => [dataList];
 }
 
 class ItemData extends Equatable {
@@ -17,7 +20,9 @@ class ItemData extends Equatable {
     @required this.htmlTags,
     @required this.pdfLinks,
     @required this.title,
-  }) : super([htmlTags, pdfLinks, title]);
+  });
+  @override
+  List<Object> get props => [htmlTags, pdfLinks, title];
 }
 
 class HtmlTag extends Equatable {
@@ -27,7 +32,10 @@ class HtmlTag extends Equatable {
   HtmlTag({
     @required this.html,
     @required this.title,
-  }) : super([html, title]);
+  });
+
+  @override
+  List<Object> get props => [html, title];
 }
 
 class PdfLink extends Equatable {
@@ -37,5 +45,7 @@ class PdfLink extends Equatable {
   PdfLink({
     @required this.link,
     @required this.title,
-  }) : super([link, title]);
+  });
+  @override
+  List<Object> get props => [link, title];
 }

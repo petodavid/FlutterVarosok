@@ -5,6 +5,7 @@ import 'package:jpt_app/core/error/failures.dart';
 import 'package:jpt_app/core/network/network_info.dart';
 import 'package:jpt_app/features/app/data/datasources/item_data_list_local_data_source.dart';
 import 'package:jpt_app/features/app/data/datasources/item_data_list_remote_data_source.dart';
+import 'package:jpt_app/features/app/data/models/item_data_list_model.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/domain/repositories/item_data_list_repository.dart';
 
@@ -23,7 +24,7 @@ class ItemListDataRepositoryImpl implements ItemListDataRepository {
   Future<Either<Failure, ItemDataList>> getItemListData() async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteItemListData = await remoteDataSource.getItemListData();
+        var remoteItemListData = await remoteDataSource.getItemListData();
         localDataSource.cacheItemListData(remoteItemListData);
         return Right(remoteItemListData);
       } on ServerException {
