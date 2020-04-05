@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/features/app/domain/entities/settings_screen_menu.dart';
+import 'package:jpt_app/features/app/presentation/pages/settings_screen/widgets/settings_menu_items.dart';
 
 Widget settingsListView(BuildContext context) {
-  final languageItem = SettingsMenuItem(
-      title: 'Valami',
-      image: CircleAvatar(),
-      children: [CircleAvatar(), CircleAvatar()]);
-  final menuItems = [languageItem];
+  final menuItems = getSettingsMenuItemsList(context);
   return ListView.separated(
     padding: const EdgeInsets.all(8),
     itemCount: menuItems.length,
     itemBuilder: (BuildContext context, int index) {
+      if (menuItems[index].children == null) {
+        return ListTile(
+          title: menuItems[index].title,
+          leading: menuItems[index].image,
+        );
+      }
       return ExpansionTile(
-        title: Text(menuItems[index].title),
+        title: menuItems[index].title,
         leading: menuItems[index].image,
         children: menuItems[index].children,
       );

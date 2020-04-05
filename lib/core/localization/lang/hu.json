@@ -6,8 +6,10 @@
   "back": "Vissza",
   "qr": "QR kód olvasás",
   "settings": "Beállítások",
-  "pdfFile" : "Pdf fájl",
+  "pdfFile": "Pdf fájl",
   "webPage": "Weboldal",
-  "cancel": "Mégsem"
-
+  "cancel": "Mégsem",
+  "languages": "Nyelvek",
+  "themes": "Témák",
+  "signOut": "Kijelentkezés"
 }

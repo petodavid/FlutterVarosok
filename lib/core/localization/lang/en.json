@@ -6,8 +6,10 @@
   "back": "Back",
   "qr": "QR code scanning",
   "settings": "Settings",
-  "pdfFile" : "Pdf File",
+  "pdfFile": "Pdf File",
   "webPage": "Web Page",
-  "cancel": "Cancel"
-
+  "cancel": "Cancel",
+  "languages": "Language",
+  "themes": "Themes",
+  "signOut": "SignOut"
 }

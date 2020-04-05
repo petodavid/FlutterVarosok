@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/features/app/presentation/pages/settings_screen/settings_screen.dart';
 
 AppBar homeListAppBar(BuildContext context) {
   return AppBar(
@@ -12,10 +13,17 @@ AppBar homeListAppBar(BuildContext context) {
       ),
     ),
     actions: <Widget>[
-      Container(
-        margin: EdgeInsets.only(right: 10),
-        alignment: Alignment.center,
-        child: FaIcon(FontAwesomeIcons.userCog),
+      IconButton(
+        icon: FaIcon(FontAwesomeIcons.userCog),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SettingsScreen(),
+              fullscreenDialog: true,
+            ),
+          );
+        },
       ),
     ],
     flexibleSpace: Container(
