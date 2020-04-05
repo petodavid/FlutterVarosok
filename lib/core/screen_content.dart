@@ -1,0 +1,1 @@
+enum ScreenContent { pdfGridScreen, webGridScreen }

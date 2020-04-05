@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/features/app/presentation/pages/home_list_page/home_list_screen.dart';
 
+import 'features/app/presentation/pages/web_view_screen/web_view_screen.dart';
 import 'injection_container.dart' as di;
 
 void main() async {

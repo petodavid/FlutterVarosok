@@ -21,7 +21,7 @@ void main() {
   test('initialState should be Empty', () {
     expect(bloc.initialState, equals(Empty()));
   });
-  group('GetTriviaForRandomNumber', () {
+  group('Get itemDataList', () {
     final pdfLinks = [PdfLink(title: 'title', link: 'links')];
     final testHtml = [HtmlTag(title: 'tags', html: 'htmlCode')];
     final itemData = [

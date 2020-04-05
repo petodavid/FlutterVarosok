@@ -36,7 +36,7 @@ class HomeListTile extends StatelessWidget {
       title: Text(
         items.dataList[index].title,
       ),
-      onTap: () => showModalDialogSheet(context),
+      onTap: () => showModalDialogSheet(context, items.dataList[index]),
     );
   }
 }
