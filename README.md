@@ -1,16 +1,14 @@
-# jpt_app
+![mockup](https://firebasestorage.googleapis.com/v0/b/jptapp-4228f.appspot.com/o/doc%2Fmockup.jpg?alt=media&token=f5efb0c9-b046-47d3-96de-9df0d2277b07 "mockup")
 
-JPT Application
+# JPT Flutter mobile application
 
-## Getting Started
+**Features:**
+- Firebase email authentication
+- English, Hungarian language support
+- QR code scanning 
+- Saving PDFs to local storage
+- Adaptive user interface elements
 
-This project is a starting point for a Flutter application.
+------------
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
