@@ -1,6 +1,14 @@
 PODS:
+  - downloads_path_provider (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - MTBBarcodeScanner (5.0.11)
+  - path_provider (0.0.1):
+    - Flutter
+  - path_provider_macos (0.0.1):
+    - Flutter
+  - "permission_handler (5.0.0+hotfix.3)":
+    - Flutter
   - qr_code_scanner (0.0.2):
     - Flutter
     - MTBBarcodeScanner
@@ -10,15 +18,22 @@ PODS:
     - Flutter
   - shared_preferences_web (0.0.1):
     - Flutter
+  - simple_pdf_viewer (0.0.1):
+    - Flutter
   - webview_flutter (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - downloads_path_provider (from `.symlinks/plugins/downloads_path_provider/ios`)
   - Flutter (from `Flutter`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
+  - simple_pdf_viewer (from `.symlinks/plugins/simple_pdf_viewer/ios`)
   - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
 SPEC REPOS:
@@ -26,8 +41,16 @@ SPEC REPOS:
     - MTBBarcodeScanner
 
 EXTERNAL SOURCES:
+  downloads_path_provider:
+    :path: ".symlinks/plugins/downloads_path_provider/ios"
   Flutter:
     :path: Flutter
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  path_provider_macos:
+    :path: ".symlinks/plugins/path_provider_macos/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
   qr_code_scanner:
     :path: ".symlinks/plugins/qr_code_scanner/ios"
   shared_preferences:
@@ -36,16 +59,23 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_macos/ios"
   shared_preferences_web:
     :path: ".symlinks/plugins/shared_preferences_web/ios"
+  simple_pdf_viewer:
+    :path: ".symlinks/plugins/simple_pdf_viewer/ios"
   webview_flutter:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
+  downloads_path_provider: fe0d06888d4b8c055a59edbc2f51f03e63cb0e28
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
+  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
+  path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
+  permission_handler: 4a985b5448897c27fdeadde84f7452520c0e6c58
   qr_code_scanner: 16107718bdad7d708cdf6a5eacdca24b56cdf471
   shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
   shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
+  simple_pdf_viewer: 983f68fcfff9e4bacbc07a7ddf86efe4bf3fec11
   webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
 
 PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83

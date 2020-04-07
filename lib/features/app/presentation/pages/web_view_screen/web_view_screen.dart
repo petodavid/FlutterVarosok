@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/features/app/presentation/pages/web_view_screen/widgets/web_view_app_bar.dart';
 import 'package:jpt_app/features/app/presentation/pages/web_view_screen/widgets/web_view_body.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:jpt_app/features/app/presentation/widgets/gradient_app_bar_with_title.dart';
 
 class WebViewScreen extends StatelessWidget {
   String html;
@@ -9,7 +8,7 @@ class WebViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: webViewAppBar(context),
+      appBar: appBarWithTitle(context, 'webPage', true),
       body: WebViewBody(html: html),
     );
   }

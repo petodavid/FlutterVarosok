@@ -11,5 +11,7 @@
   "cancel": "Cancel",
   "languages": "Language",
   "themes": "Themes",
-  "signOut": "SignOut"
+  "signOut": "SignOut",
+  "pdfFile": "PDF File",
+  "save": "Save"
 }

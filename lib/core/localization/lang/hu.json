@@ -11,5 +11,7 @@
   "cancel": "Mégsem",
   "languages": "Nyelvek",
   "themes": "Témák",
-  "signOut": "Kijelentkezés"
+  "signOut": "Kijelentkezés",
+  "pdfFile": "PDF Fájl",
+  "save": "Mentés"
 }

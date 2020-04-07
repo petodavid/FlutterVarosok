@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 
-AppBar settingsAppBar(BuildContext context) {
+AppBar appBarWithTitle(BuildContext context, String title,
+    [bool localized = false]) {
   return AppBar(
     title: Text(
-      AppLocalizations.of(context).translate('settings'),
+      localized ? AppLocalizations.of(context).translate(title) : title,
       style: TextStyle(
         color: Colors.white,
       ),

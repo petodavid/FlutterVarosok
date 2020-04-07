@@ -37,6 +37,12 @@ dependencies:
   qr_code_scanner: ^0.0.12
   webview_flutter: ^0.3.19+9
   flutter_staggered_animations: ^0.1.2
+  simple_pdf_viewer: ^0.2.2
+  path_provider: ^1.6.5
+  downloads_path_provider: ^0.1.0
+  permission_handler: ^5.0.0+hotfix.3
+
+
 
 dev_dependencies:
   flutter_test:

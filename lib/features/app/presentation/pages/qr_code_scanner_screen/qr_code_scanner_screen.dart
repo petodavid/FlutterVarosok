@@ -26,11 +26,12 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
       body: Container(
         padding: EdgeInsets.only(top: 100),
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-          colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
-          begin: Alignment.topLeft,
-          end: Alignment.topRight,
-        )),
+          gradient: LinearGradient(
+            colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
+            begin: Alignment.topLeft,
+            end: Alignment.topRight,
+          ),
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(60),
