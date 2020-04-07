@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 
@@ -49,34 +50,51 @@ class ItemDataModel extends ItemData {
 }
 
 class HtmlTagModel extends HtmlTag {
+  final String id;
+  final String html;
+  final String title;
+
   HtmlTagModel({
-    final String html,
-    final String title,
-  }) : super(html: html, title: title);
+    this.id,
+    this.html,
+    this.title,
+  }) : super(id: id, html: html, title: title);
 
   factory HtmlTagModel.fromJson(Map<String, dynamic> json) => HtmlTagModel(
+        id: json["id"] == null ? null : json["id"],
         html: json["html"] == null ? null : json["html"],
         title: json["title"] == null ? null : json["title"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
+        "id": id == null ? null : id,
         "html": html == null ? null : html,
         "title": title == null ? null : title,
       };
 }
 
 class PdfLinkModel extends PdfLink {
-  PdfLinkModel({
-    final String link,
-    final String title,
-  }) : super(link: link, title: title);
+  final String id;
+  final String link;
+  final String title;
 
-  factory PdfLinkModel.fromJson(Map<String, dynamic> json) => PdfLinkModel(
+  PdfLinkModel({
+    this.id,
+    this.link,
+    this.title,
+  }) : super(id: id, link: link, title: title);
+
+  factory PdfLinkModel.fromJson(Map<String, dynamic> json) =>
+      PdfLinkModel(
+        id: json["id"] == null ? null : json["id"],
         link: json["link"] == null ? null : json["link"],
         title: json["title"] == null ? null : json["title"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
+        "id": id == null ? null : id,
         "link": link == null ? null : link,
         "title": title == null ? null : title,
       };
@@ -85,6 +103,7 @@ class PdfLinkModel extends PdfLink {
 extension RemoveEmptyDataLists on ItemDataListModel {
   void removeEmptyDataLists() {
     _removeEmptyOrNullTitleItems();
+    _removeEmptyOrNullPdfAndWebIDArrays();
     _removeEmptyOrNullPdfLinkArrayTargetLinkItems();
     _removeEmptyOrNullHtmlTagsArrayHtmlItems();
     _removeEmptyOrNullPdfLinkAndHtmlTagArrays();
@@ -93,13 +112,34 @@ extension RemoveEmptyDataLists on ItemDataListModel {
   void _removeEmptyOrNullTitleItems() {
     this
         .dataList
-        .removeWhere((item) => item.title == null || item.title.trim().isEmpty);
+        .removeWhere((item) =>
+    item.title == null || item.title
+        .trim()
+        .isEmpty);
+  }
+
+  void _removeEmptyOrNullPdfAndWebIDArrays() {
+    for (var item in this.dataList) {
+      item.pdfLinks
+          .removeWhere((item) =>
+      item.id == null || item.id
+          .trim()
+          .isEmpty);
+      item.htmlTags
+          .removeWhere((item) =>
+      item.id == null || item.id
+          .trim()
+          .isEmpty);
+    }
   }
 
   void _removeEmptyOrNullPdfLinkArrayTargetLinkItems() {
     for (var item in this.dataList) {
       item.pdfLinks
-          .removeWhere((item) => item.link == null || item.link.trim().isEmpty);
+          .removeWhere((item) =>
+      item.link == null || item.link
+          .trim()
+          .isEmpty);
     }
   }
 

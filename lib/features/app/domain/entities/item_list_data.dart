@@ -26,26 +26,31 @@ class ItemData extends Equatable {
 }
 
 class HtmlTag extends Equatable {
+  final String id;
   final String html;
   final String title;
 
   HtmlTag({
+    this.id,
     this.html,
     this.title,
   });
 
   @override
-  List<Object> get props => [html, title];
+  List<Object> get props => [id, html, title];
 }
 
 class PdfLink extends Equatable {
+  final String id;
   final String link;
   final String title;
 
   PdfLink({
+    this.id,
     this.link,
     this.title,
   });
+
   @override
-  List<Object> get props => [link, title];
+  List<Object> get props => [id, link, title];
 }
