@@ -66,8 +66,7 @@ class HtmlTagModel extends HtmlTag {
         title: json["title"] == null ? null : json["title"],
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "html": html == null ? null : html,
         "title": title == null ? null : title,

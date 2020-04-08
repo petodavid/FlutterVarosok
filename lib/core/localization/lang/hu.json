@@ -13,5 +13,12 @@
   "themes": "Témák",
   "signOut": "Kijelentkezés",
   "pdfFile": "PDF Fájl",
-  "save": "Mentés"
+  "save": "Mentés",
+  "invalidEmail": "Gond van az Email címeddel",
+  "invalidEmailDescription": "Úgy tünik nem felel meg a követelményeknek az email címed",
+  "invalidPassword": "Gond van a jeleszavaddal",
+  "invalidPasswordDescription": "Jelszavad legalább 8 karater hosszúságú kell, hogy legyen",
+  "authException": "Új vagy itt?",
+  "signOutTitle": "Kijelentkezés",
+  "signOutDescription": "Biztos kiszeretnél jelentkezni?"
 }

@@ -39,8 +39,9 @@ dependencies:
   flutter_staggered_animations: ^0.1.2
   simple_pdf_viewer: ^0.2.2
   path_provider: ^1.6.5
-  downloads_path_provider: ^0.1.0
   permission_handler: ^5.0.0+hotfix.3
+  firebase_auth: ^0.15.5+3
+  flushbar: 1.6.0
 
 
 

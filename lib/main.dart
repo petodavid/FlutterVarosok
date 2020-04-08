@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:jpt_app/core/auth/currest_user.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/features/app/presentation/pages/home_list_page/home_list_screen.dart';
+import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
 
+import 'features/app/presentation/widgets/adaptive_circular_indicator.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -44,7 +47,17 @@ class JptApp extends StatelessWidget {
         // If the locale of the device is not supported, use the first one
         return supportedLocales.first;
       },
-      home: HomeListScreen(),
+      home: FutureBuilder<bool>(
+        future: CurrentUser().isSignedIn(),
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return snapshot.data ? HomeListScreen() : LogInScreen();
+          }
+          return Center(
+            child: AdaptiveCircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }

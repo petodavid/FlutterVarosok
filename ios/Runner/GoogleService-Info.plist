@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>70392341772-a9dm9jkhpndm28c9hhiveuq7sbs67rr5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.70392341772-a9dm9jkhpndm28c9hhiveuq7sbs67rr5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDVgNNTC3wCH2FGSiT3P59cu9il1bWloN4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>70392341772</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.petodavid.jptapp.jptApp</string>
+	<key>PROJECT_ID</key>
+	<string>jptapp-4228f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>jptapp-4228f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:70392341772:ios:42d51a85717a023a0d5529</string>
+	<key>DATABASE_URL</key>
+	<string>https://jptapp-4228f.firebaseio.com</string>
+</dict>
+</plist>

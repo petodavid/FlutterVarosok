@@ -1,12 +1,14 @@
 import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jpt_app/features/app/data/models/item_data_list_model.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
+
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
-  final pdfLinks = [PdfLinkModel(title: 'title', link: 'link')];
-  final testHtml = [HtmlTagModel(title: 'title', html: 'htmlCode')];
+  final pdfLinks = [PdfLinkModel(id: 'id', title: 'title', link: 'link')];
+  final testHtml = [HtmlTagModel(id: 'id', title: 'title', html: 'htmlCode')];
   final itemData = [
     ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title'),
     ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')

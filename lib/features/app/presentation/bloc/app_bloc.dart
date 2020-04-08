@@ -5,6 +5,7 @@ import 'package:jpt_app/core/error/failures.dart';
 import 'package:jpt_app/core/usecase.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_list_data.dart';
+
 import 'bloc.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
@@ -23,8 +24,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async* {
     if (event is GetDataListForItems) {
       yield Loading();
-      final failureOrTrivia = await getItemDataList(NoParams());
-      yield* _eitherLoadedOrErrorState(failureOrTrivia);
+      final failureOrItemDataList = await getItemDataList(NoParams());
+      yield* _eitherLoadedOrErrorState(failureOrItemDataList);
     }
   }
 }

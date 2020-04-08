@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+
 import 'log_in_button.dart';
 
 class LogInCard extends StatefulWidget {
@@ -12,14 +13,13 @@ class _State extends State<LogInCard> {
   final FocusNode myFocusNodeEmailLogin = FocusNode();
   final FocusNode myFocusNodePasswordLogin = FocusNode();
 
-  TextEditingController activationKeyController = TextEditingController();
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
   bool _obscureTextLogin = true;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30.0),
+      padding: EdgeInsets.only(top: 20.0),
       child: Column(
         children: <Widget>[
           Stack(
@@ -106,7 +106,10 @@ class _State extends State<LogInCard> {
                   ),
                 ),
               ),
-              logInButton(context),
+              GestureDetector(
+                child: logInButton(
+                    context, loginEmailController, loginPasswordController),
+              ),
             ],
           ),
         ],

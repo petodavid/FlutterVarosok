@@ -2,12 +2,14 @@
   {
     "htmlTags": [
       {
+        "id": "id",
         "html": "htmlCode",
         "title": "title"
       }
     ],
     "pdfLinks": [
       {
+        "id": "id",
         "link": "link",
         "title": "title"
       }
@@ -17,12 +19,14 @@
   {
     "htmlTags": [
       {
+        "id": "id",
         "html": "htmlCode",
         "title": "title"
       }
     ],
     "pdfLinks": [
       {
+        "id": "id",
         "link": "link",
         "title": "title"
       }

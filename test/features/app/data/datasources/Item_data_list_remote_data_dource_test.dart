@@ -1,11 +1,10 @@
-import 'package:http/http.dart' as http;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:jpt_app/core/error/exceptions.dart';
-import 'package:jpt_app/features/app/data/datasources/item_data_list_local_data_source.dart';
 import 'package:jpt_app/features/app/data/datasources/item_data_list_remote_data_source.dart';
 import 'package:jpt_app/features/app/data/models/item_data_list_model.dart';
-import 'package:mockito/mockito.dart';
 import 'package:matcher/matcher.dart';
+import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
@@ -40,8 +39,7 @@ void main() {
           (_) async => http.Response(fixture('item_data_list.json'), 200),
         );
         dataSource.getItemListData();
-        verify(mockHttpClient.get(
-            'https://jptapp-4228f.firebaseio.com/items.json',
+        verify(mockHttpClient.get('https://jptapp-4228f.firebaseio.com/.json',
             headers: {'Content-Type': 'application/json'}));
       },
     );

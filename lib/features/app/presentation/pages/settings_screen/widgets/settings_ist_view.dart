@@ -11,6 +11,7 @@ Widget settingsListView(BuildContext context) {
         return ListTile(
           title: menuItems[index].title,
           leading: menuItems[index].image,
+          onTap: menuItems[index].onTap,
         );
       }
       return ExpansionTile(

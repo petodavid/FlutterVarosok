@@ -13,5 +13,14 @@
   "themes": "Themes",
   "signOut": "SignOut",
   "pdfFile": "PDF File",
-  "save": "Save"
+  "save": "Save",
+  "invalidEmail": "Check your email address",
+  "invalidEmailDescription": "it doesn't seem to be a valid email address",
+  "invalidPassword": "Check your password",
+  "invalidPasswordDescription": "Password must have at least 8 characters",
+  "authException": "Are you new here?",
+  "authExceptionDescription": "This application is only for existing users",
+  "authExceptionDescription": "This application is only for existing users",
+  "signOutTitle": "Sign Out",
+  "signOutDescription": "Are you sure, you want to sign out?"
 }

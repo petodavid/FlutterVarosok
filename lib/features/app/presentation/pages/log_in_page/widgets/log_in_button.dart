@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jpt_app/core/auth/email_auth.dart';
 import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/features/app/presentation/pages/home_list_page/home_list_screen.dart';
 
-Widget logInButton(BuildContext context) {
+Widget logInButton(BuildContext context, TextEditingController emailController,
+    TextEditingController passwordController) {
   return Container(
     margin: EdgeInsets.only(top: 180.0),
     decoration: BoxDecoration(
@@ -39,6 +42,17 @@ Widget logInButton(BuildContext context) {
                 fontFamily: "WorkSansBold"),
           ),
         ),
-        onPressed: () async {}),
+        onPressed: () async {
+          if (await User().logInAccount(
+              emailController.text, passwordController.text, context)) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeListScreen(),
+                fullscreenDialog: false,
+              ),
+            );
+          }
+        }),
   );
 }
