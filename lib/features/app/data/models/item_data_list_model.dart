@@ -90,8 +90,7 @@ class PdfLinkModel extends PdfLink {
         title: json["title"] == null ? null : json["title"],
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "link": link == null ? null : link,
         "title": title == null ? null : title,

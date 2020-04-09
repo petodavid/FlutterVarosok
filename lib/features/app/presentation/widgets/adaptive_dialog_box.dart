@@ -65,13 +65,13 @@ void _showMaterialSimpleDialog(BuildContext context) {
               ),
               onPressed: () {
                 CurrentUser().signOut();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LogInScreen(),
-                    fullscreenDialog: true,
-                  ),
-                );
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogInScreen(),
+                      fullscreenDialog: true,
+                    ),
+                    (_) => false);
               },
             ),
           ],

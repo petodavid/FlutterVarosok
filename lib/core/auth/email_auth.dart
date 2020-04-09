@@ -17,11 +17,11 @@ class User {
       ))
           .user;
       return (user == null) ? false : true;
-    } on PlatformException catch (e) {
+    } on PlatformException catch (_) {
       LocalNotificationFlushBar(context: context).showAuthException();
-    } on InvalidEmailException catch (e) {
+    } on InvalidEmailException catch (_) {
       LocalNotificationFlushBar(context: context).showInvalidEmailException();
-    } on InvalidPasswordException catch (e) {
+    } on InvalidPasswordException catch (_) {
       LocalNotificationFlushBar(context: context)
           .showInvalidPasswordException();
     }
