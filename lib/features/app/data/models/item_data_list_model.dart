@@ -84,8 +84,7 @@ class PdfLinkModel extends PdfLink {
     this.title,
   }) : super(id: id, link: link, title: title);
 
-  factory PdfLinkModel.fromJson(Map<String, dynamic> json) =>
-      PdfLinkModel(
+  factory PdfLinkModel.fromJson(Map<String, dynamic> json) => PdfLinkModel(
         id: json["id"] == null ? null : json["id"],
         link: json["link"] == null ? null : json["link"],
         title: json["title"] == null ? null : json["title"],

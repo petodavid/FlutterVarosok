@@ -38,7 +38,7 @@ void main() {
     );
     test(
       'should return false in case of a not strong enought password',
-          () {
+      () {
         final password = 'jelszo';
         expect(() => inputConverter.isValidPassword(password),
             throwsA(TypeMatcher<InvalidPasswordException>()));
