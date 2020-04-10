@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
+
 import 'home_list_tile.dart';
 
 class HomeListView extends StatelessWidget {

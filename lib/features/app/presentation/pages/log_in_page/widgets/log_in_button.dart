@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jpt_app/core/auth/email_auth.dart';
 import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
-import 'package:jpt_app/features/app/presentation/pages/home_list_page/home_list_screen.dart';
+import 'package:jpt_app/features/app/presentation/pages/home_list_screen/home_list_screen.dart';
 
 Widget logInButton(BuildContext context, TextEditingController emailController,
     TextEditingController passwordController) {

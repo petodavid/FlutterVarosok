@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jpt_app/core/auth/currest_user.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
-import 'package:jpt_app/features/app/presentation/pages/home_list_page/home_list_screen.dart';
+import 'package:jpt_app/features/app/presentation/pages/home_list_screen/home_list_screen.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
 
 import 'features/app/presentation/widgets/adaptive_circular_indicator.dart';

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
-
-import 'modal_bottom_sheet.dart';
+import 'package:jpt_app/features/app/presentation/pages/detail_list_screen/detail_list_screen.dart';
 
 class HomeListTile extends StatelessWidget {
   HomeListTile({@required this.items, @required this.index});
@@ -36,7 +35,15 @@ class HomeListTile extends StatelessWidget {
       title: Text(
         items.dataList[index].title,
       ),
-      onTap: () => showModalDialogSheet(context, items.dataList[index]),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DetailListScreen(itemData: items.dataList[index]),
+          ),
+        );
+      },
     );
   }
 }

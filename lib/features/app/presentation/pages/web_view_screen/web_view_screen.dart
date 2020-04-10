@@ -4,11 +4,14 @@ import 'package:jpt_app/features/app/presentation/widgets/gradient_app_bar_with_
 
 class WebViewScreen extends StatelessWidget {
   String html;
-  WebViewScreen({@required this.html});
+  String title;
+
+  WebViewScreen({@required this.html, @required this.title});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWithTitle(context, 'webPage', true),
+      appBar: appBarWithTitle(context, title),
       body: WebViewBody(html: html),
     );
   }

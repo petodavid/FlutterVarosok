@@ -30,14 +30,7 @@ void _showCupertinoAlertDialog(BuildContext context) {
                 AppLocalizations.of(context).translate('signOutTitle'),
               ),
               onPressed: () {
-                CurrentUser().signOut();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LogInScreen(),
-                      fullscreenDialog: true,
-                    ),
-                    (_) => false);
+                _signOutAndNavigateToLogInScreen(context);
               },
             ),
             CupertinoDialogAction(
@@ -77,17 +70,21 @@ void _showMaterialSimpleDialog(BuildContext context) {
                 style: TextStyle(color: Colors.red),
               ),
               onPressed: () {
-                CurrentUser().signOut();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LogInScreen(),
-                      fullscreenDialog: true,
-                    ),
-                    (_) => false);
+                _signOutAndNavigateToLogInScreen(context);
               },
             ),
           ],
         );
       });
+}
+
+void _signOutAndNavigateToLogInScreen(BuildContext context) {
+  CurrentUser().signOut();
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LogInScreen(),
+        fullscreenDialog: true,
+      ),
+      (_) => false);
 }
