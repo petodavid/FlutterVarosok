@@ -8,7 +8,7 @@ import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_
 
 void showAdaptiveDialobBox(BuildContext context) {
   return Platform.isIOS
-      ? _showMaterialSimpleDialog(context)
+      ? _showCupertinoAlertDialog(context)
       : _showMaterialSimpleDialog(context);
 }
 
@@ -18,19 +18,32 @@ void _showCupertinoAlertDialog(BuildContext context) {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Text(
-              'Allow "Maps" to access your location while you use the app?'),
+          title: Text(AppLocalizations.of(context).translate('signOutTitle')),
           content: Text(
-              'Your current location will be displayed on the map and used for directions, nearby search results, and estimated travel times.'),
+            AppLocalizations.of(context).translate('signOutDescription'),
+          ),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text('Don\'t Allow'),
+              isDefaultAction: true,
+              isDestructiveAction: true,
+              child: Text(
+                AppLocalizations.of(context).translate('signOutTitle'),
+              ),
               onPressed: () {
-                Navigator.of(context).pop();
+                CurrentUser().signOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogInScreen(),
+                      fullscreenDialog: true,
+                    ),
+                    (_) => false);
               },
             ),
             CupertinoDialogAction(
-              child: Text('Allow'),
+              child: Text(
+                AppLocalizations.of(context).translate('cancel'),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },

@@ -27,11 +27,9 @@ class JptApp extends StatelessWidget {
       ],
       // These delegates make sure that the localization data for the proper language is loaded
       localizationsDelegates: [
-        // A class which loads the translations from JSON files
         AppLocalizations.delegate,
-        // Built-in localization of basic text for Material widgets
         GlobalMaterialLocalizations.delegate,
-        // Built-in localization for text direction LTR/RTL
+        GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       // Returns a locale which will be used by the app
