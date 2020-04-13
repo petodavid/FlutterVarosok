@@ -9,6 +9,7 @@ import 'package:jpt_app/features/app/presentation/pages/home_list_screen/widgets
 import 'package:jpt_app/features/app/presentation/pages/home_list_screen/widgets/home_screen_app_bar.dart';
 import 'package:jpt_app/features/app/presentation/widgets/adaptive_circular_indicator.dart';
 import 'package:jpt_app/injection_container.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class HomeListScreen extends StatelessWidget {
   HomeListScreen();
@@ -16,6 +17,8 @@ class HomeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:
+          ThemeProvider.themeOf(context).data.scaffoldBackgroundColor,
       appBar: homeListAppBar(context),
       floatingActionButton: Padding(
         padding: EdgeInsets.all(10),

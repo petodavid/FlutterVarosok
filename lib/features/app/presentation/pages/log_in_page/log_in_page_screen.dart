@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jpt_app/core/constants/colors.dart';
-import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/widgets/arc.dart';
-import 'package:jpt_app/features/app/presentation/pages/log_in_page/widgets/log_in_button.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/widgets/log_in_card.dart';
 import 'package:lottie/lottie.dart';
 

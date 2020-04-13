@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/core/constants/colors.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/presentation/pages/detail_list_screen/detail_list_screen.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class HomeListTile extends StatelessWidget {
   HomeListTile({@required this.items, @required this.index});
@@ -16,8 +17,10 @@ class HomeListTile extends StatelessWidget {
             shape: BoxShape.circle,
             gradient: LinearGradient(
               colors: [
-                kHomeListScreenStartGradient,
-                kHomeListScreenEndGradient
+                ThemeProvider.optionsOf<GradientOptions>(context)
+                    .homeListScreenStartGradient,
+                ThemeProvider.optionsOf<GradientOptions>(context)
+                    .homeListScreenEndGradient,
               ],
             )),
         child: CircleAvatar(
@@ -34,6 +37,11 @@ class HomeListTile extends StatelessWidget {
       ),
       title: Text(
         items.dataList[index].title,
+        style: ThemeProvider
+            .themeOf(context)
+            .data
+            .textTheme
+            .title,
       ),
       onTap: () {
         Navigator.push(

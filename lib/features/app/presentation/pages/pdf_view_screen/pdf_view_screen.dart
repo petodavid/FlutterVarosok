@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:jpt_app/core/util/document_saver_to_local_storage.dart';
 import 'package:jpt_app/features/app/presentation/widgets/gradient_app_bar_with_title.dart';
 import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class PdfViewScreen extends StatelessWidget {
   String pdfLink;
@@ -21,7 +22,12 @@ class PdfViewScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
+            colors: [
+              ThemeProvider.optionsOf<GradientOptions>(context)
+                  .homeListScreenStartGradient,
+              ThemeProvider.optionsOf<GradientOptions>(context)
+                  .homeListScreenEndGradient,
+            ],
             begin: Alignment.topLeft,
             end: Alignment.topRight,
           ),

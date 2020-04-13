@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jpt_app/features/app/presentation/pages/settings_screen/widgets/settings_menu_items.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 Widget settingsListView(BuildContext context) {
   final menuItems = getSettingsMenuItemsList(context);
@@ -20,6 +21,8 @@ Widget settingsListView(BuildContext context) {
         children: menuItems[index].children,
       );
     },
-    separatorBuilder: (BuildContext context, int index) => const Divider(),
+    separatorBuilder: (BuildContext context, int index) => Divider(
+      color: ThemeProvider.themeOf(context).data.iconTheme.color,
+    ),
   );
 }

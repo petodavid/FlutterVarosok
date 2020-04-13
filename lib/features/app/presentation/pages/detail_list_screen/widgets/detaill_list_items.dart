@@ -5,6 +5,7 @@ import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/domain/entities/list_view_items.dart';
 import 'package:jpt_app/features/app/presentation/pages/pdf_view_screen/pdf_view_screen.dart';
 import 'package:jpt_app/features/app/presentation/pages/web_view_screen/web_view_screen.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 List<ListViewItem> getDetailScreenItemsList(
     BuildContext context, ItemData itemData) {
@@ -20,10 +21,13 @@ List<ListViewItem> getDetailScreenItemsList(
 
 ListViewItem _getPdflItem(BuildContext context, PdfLink pdfLink) {
   return ListViewItem(
-    title: Text(pdfLink.title),
+    title: Text(
+      pdfLink.title,
+      style: ThemeProvider.themeOf(context).data.textTheme.title,
+    ),
     image: FaIcon(
       FontAwesomeIcons.solidFilePdf,
-      color: Colors.blue,
+      color: ThemeProvider.themeOf(context).data.iconTheme.color,
     ),
     onTap: () {
       Navigator.push(
@@ -41,17 +45,29 @@ ListViewItem _getPdflItem(BuildContext context, PdfLink pdfLink) {
 
 ListViewItem _getHtmlItem(BuildContext context, HtmlTag htmlTag) {
   return ListViewItem(
-    title: Text(htmlTag.title),
+    title: Text(
+      htmlTag.title,
+      style: ThemeProvider
+          .themeOf(context)
+          .data
+          .textTheme
+          .title,
+    ),
     image: FaIcon(
       FontAwesomeIcons.html5,
-      color: Colors.blue,
+      color: ThemeProvider
+          .themeOf(context)
+          .data
+          .iconTheme
+          .color,
     ),
     onTap: () {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => WebViewScreen(
-            html: htmlTag.html,
+          builder: (context) =>
+              WebViewScreen(
+                html: htmlTag.html,
             title: htmlTag.title,
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/core/constants/colors.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:lottie/lottie.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class ArcBanner extends StatelessWidget {
   ArcBanner({this.height = 300, @required this.lottie});
@@ -18,8 +19,10 @@ class ArcBanner extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [
-                  kHomeListScreenStartGradient,
-                  kHomeListScreenEndGradient
+                  ThemeProvider.optionsOf<GradientOptions>(context)
+                      .homeListScreenStartGradient,
+                  ThemeProvider.optionsOf<GradientOptions>(context)
+                      .homeListScreenEndGradient,
                 ],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 1.0),

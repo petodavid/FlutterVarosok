@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:jpt_app/features/app/presentation/pages/settings_screen/settings_screen.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 AppBar homeListAppBar(BuildContext context) {
   return AppBar(
@@ -29,7 +30,12 @@ AppBar homeListAppBar(BuildContext context) {
     flexibleSpace: Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-        colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
+        colors: [
+          ThemeProvider.optionsOf<GradientOptions>(context)
+              .homeListScreenStartGradient,
+          ThemeProvider.optionsOf<GradientOptions>(context)
+              .homeListScreenEndGradient,
+        ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       )),

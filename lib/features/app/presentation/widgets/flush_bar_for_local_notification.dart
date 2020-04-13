@@ -2,8 +2,9 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class LocalNotificationFlushBar {
   BuildContext context;
@@ -23,8 +24,10 @@ class LocalNotificationFlushBar {
       message:
           AppLocalizations.of(context).translate('invalidPasswordDescription'),
       backgroundGradient: LinearGradient(colors: [
-        kFlushBarExceptionGradientStart,
-        kFlushBarExceptionGradientEnd
+        ThemeProvider.optionsOf<GradientOptions>(context)
+            .flushBarExceptionGradientStart,
+        ThemeProvider.optionsOf<GradientOptions>(context)
+            .flushBarExceptionGradientEnd,
       ]),
     )..show(context);
   }
@@ -42,8 +45,12 @@ class LocalNotificationFlushBar {
       message:
           AppLocalizations.of(context).translate('invalidEmailDescription'),
       backgroundGradient: LinearGradient(colors: [
-        kFlushBarExceptionGradientStart,
-        kFlushBarExceptionGradientEnd
+        ThemeProvider
+            .optionsOf<GradientOptions>(context)
+            .flushBarExceptionGradientStart,
+        ThemeProvider
+            .optionsOf<GradientOptions>(context)
+            .flushBarExceptionGradientEnd,
       ]),
     )..show(context);
   }
@@ -61,8 +68,12 @@ class LocalNotificationFlushBar {
       message:
           AppLocalizations.of(context).translate('authExceptionDescription'),
       backgroundGradient: LinearGradient(colors: [
-        kFlushBarExceptionGradientStart,
-        kFlushBarExceptionGradientEnd
+        ThemeProvider
+            .optionsOf<GradientOptions>(context)
+            .flushBarExceptionGradientStart,
+        ThemeProvider
+            .optionsOf<GradientOptions>(context)
+            .flushBarExceptionGradientEnd,
       ]),
     )..show(context);
   }

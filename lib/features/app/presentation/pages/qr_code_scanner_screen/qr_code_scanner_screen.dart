@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class QrScannerScreen extends StatefulWidget {
   @override
@@ -27,7 +28,12 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
         padding: EdgeInsets.only(top: 100),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
+            colors: [
+              ThemeProvider.optionsOf<GradientOptions>(context)
+                  .homeListScreenStartGradient,
+              ThemeProvider.optionsOf<GradientOptions>(context)
+                  .homeListScreenEndGradient,
+            ],
             begin: Alignment.topLeft,
             end: Alignment.topRight,
           ),

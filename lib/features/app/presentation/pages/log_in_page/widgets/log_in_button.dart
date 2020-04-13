@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jpt_app/core/auth/email_auth.dart';
-import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:jpt_app/features/app/presentation/pages/home_list_screen/home_list_screen.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 Widget logInButton(BuildContext context, TextEditingController emailController,
     TextEditingController passwordController) {
@@ -11,7 +12,12 @@ Widget logInButton(BuildContext context, TextEditingController emailController,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(5.0)),
       gradient: LinearGradient(
-          colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
+          colors: [
+            ThemeProvider.optionsOf<GradientOptions>(context)
+                .homeListScreenStartGradient,
+            ThemeProvider.optionsOf<GradientOptions>(context)
+                .homeListScreenEndGradient,
+          ],
           begin: const FractionalOffset(0.2, 0.2),
           end: const FractionalOffset(1.0, 1.0),
           stops: [0.0, 1.0],
@@ -19,7 +25,9 @@ Widget logInButton(BuildContext context, TextEditingController emailController,
     ),
     child: MaterialButton(
         highlightColor: Colors.transparent,
-        splashColor: kHomeListScreenEndGradient,
+        splashColor: ThemeProvider
+            .optionsOf<GradientOptions>(context)
+            .homeListScreenEndGradient,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
           child: Text(

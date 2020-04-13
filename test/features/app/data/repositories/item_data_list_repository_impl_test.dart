@@ -7,7 +7,6 @@ import 'package:jpt_app/features/app/data/datasources/item_data_list_local_data_
 import 'package:jpt_app/features/app/data/datasources/item_data_list_remote_data_source.dart';
 import 'package:jpt_app/features/app/data/models/item_data_list_model.dart';
 import 'package:jpt_app/features/app/data/repositories/item_data_list_repository_impl.dart';
-import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:mockito/mockito.dart';
 
 class MockRemoteDataSource extends Mock

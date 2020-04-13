@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/core/constants/colors.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/core/themes/theme_options.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 AppBar appBarWithTitle(BuildContext context, String title,
     [bool localized = false]) {
@@ -14,7 +15,12 @@ AppBar appBarWithTitle(BuildContext context, String title,
     flexibleSpace: Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [kHomeListScreenStartGradient, kHomeListScreenEndGradient],
+          colors: [
+            ThemeProvider.optionsOf<GradientOptions>(context)
+                .homeListScreenStartGradient,
+            ThemeProvider.optionsOf<GradientOptions>(context)
+                .homeListScreenEndGradient,
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
