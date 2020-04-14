@@ -39,11 +39,7 @@ ListViewItem _themeItem(BuildContext context) {
   return ListViewItem(
     title: Text(
       AppLocalizations.of(context).translate('themes'),
-      style: ThemeProvider
-          .themeOf(context)
-          .data
-          .textTheme
-          .title,
+      style: ThemeProvider.themeOf(context).data.textTheme.title,
     ),
     image: FaIcon(
       FontAwesomeIcons.palette,

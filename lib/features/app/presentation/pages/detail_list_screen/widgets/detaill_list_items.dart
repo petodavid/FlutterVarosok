@@ -51,11 +51,7 @@ ListViewItem _getHtmlItem(BuildContext context, HtmlTag htmlTag) {
     ),
     image: FaIcon(
       FontAwesomeIcons.html5,
-      color: ThemeProvider
-          .themeOf(context)
-          .data
-          .iconTheme
-          .color,
+      color: ThemeProvider.themeOf(context).data.iconTheme.color,
     ),
     onTap: () {
       Navigator.push(

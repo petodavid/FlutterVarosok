@@ -53,19 +53,6 @@ class JptApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              localeResolutionCallback: (locale, supportedLocales) {
-                // Check if the current device locale is supported
-                for (var supportedLocale in supportedLocales) {
-                  if (locale != null &&
-                      locale.languageCode != null &&
-                      supportedLocale.languageCode == locale.languageCode) {
-                    return supportedLocale;
-                  }
-                }
-                // If the locale of the device is not supported, use the first one
-                return supportedLocales.first;
-              },
-
               home: FutureBuilder<bool>(
                 future: CurrentUser().isSignedIn(),
                 builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
