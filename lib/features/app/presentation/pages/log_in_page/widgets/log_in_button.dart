@@ -25,8 +25,7 @@ Widget logInButton(BuildContext context, TextEditingController emailController,
     ),
     child: MaterialButton(
         highlightColor: Colors.transparent,
-        splashColor: ThemeProvider
-            .optionsOf<GradientOptions>(context)
+        splashColor: ThemeProvider.optionsOf<GradientOptions>(context)
             .homeListScreenEndGradient,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),

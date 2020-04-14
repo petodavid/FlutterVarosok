@@ -47,11 +47,7 @@ ListViewItem _getHtmlItem(BuildContext context, HtmlTag htmlTag) {
   return ListViewItem(
     title: Text(
       htmlTag.title,
-      style: ThemeProvider
-          .themeOf(context)
-          .data
-          .textTheme
-          .title,
+      style: ThemeProvider.themeOf(context).data.textTheme.title,
     ),
     image: FaIcon(
       FontAwesomeIcons.html5,
@@ -68,8 +64,8 @@ ListViewItem _getHtmlItem(BuildContext context, HtmlTag htmlTag) {
           builder: (context) =>
               WebViewScreen(
                 html: htmlTag.html,
-            title: htmlTag.title,
-          ),
+                title: htmlTag.title,
+              ),
         ),
       );
     },

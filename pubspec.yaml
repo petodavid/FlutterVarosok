@@ -43,6 +43,11 @@ dependencies:
   firebase_auth: ^0.15.5+3
   flushbar: 1.6.0
   theme_provider: ^0.3.3
+  flutter_device_locale: ^0.4.0
+  flag: ^1.0.3
+
+
+
 
 
 

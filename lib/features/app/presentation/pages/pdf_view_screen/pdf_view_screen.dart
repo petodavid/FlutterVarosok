@@ -16,7 +16,6 @@ class PdfViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: appBarWithTitle(context, title),
       body: Container(

@@ -10,14 +10,6 @@ void main() {
 
   group('email input validation', () {
     test(
-      'should return true in case of a valid email',
-      () {
-        final email = 'david.peto@gmail.com';
-        final result = inputConverter.isValidEmail(email);
-        expect(result, true);
-      },
-    );
-    test(
       'should return false in case of a invalid email',
       () {
         final email = 'david.peto123gmail.com';
@@ -28,14 +20,6 @@ void main() {
   });
 
   group('password input validation', () {
-    test(
-      'should return true in case of a 8 char long string',
-      () {
-        final email = 'jelszo123';
-        final result = inputConverter.isValidPassword(email);
-        expect(result, true);
-      },
-    );
     test(
       'should return false in case of a not strong enought password',
       () {

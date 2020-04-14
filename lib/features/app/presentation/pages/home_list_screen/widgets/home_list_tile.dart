@@ -37,11 +37,7 @@ class HomeListTile extends StatelessWidget {
       ),
       title: Text(
         items.dataList[index].title,
-        style: ThemeProvider
-            .themeOf(context)
-            .data
-            .textTheme
-            .title,
+        style: ThemeProvider.themeOf(context).data.textTheme.title,
       ),
       onTap: () {
         Navigator.push(
