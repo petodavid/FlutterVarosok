@@ -6,7 +6,7 @@ import 'package:jpt_app/core/auth/currest_user.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
 
-void showAdaptiveDialobBox(BuildContext context) {
+void showAdaptiveDialogBox(BuildContext context) {
   return Platform.isIOS
       ? _showCupertinoAlertDialog(context)
       : _showMaterialSimpleDialog(context);

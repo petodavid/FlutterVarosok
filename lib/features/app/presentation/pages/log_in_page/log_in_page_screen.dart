@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/widgets/arc.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/widgets/log_in_card.dart';
 import 'package:lottie/lottie.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class LogInScreen extends StatefulWidget {
   LogInScreen({Key key}) : super(key: key);
@@ -17,7 +18,8 @@ class _LogInScreenState extends State<LogInScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffecf0f1),
+      backgroundColor:
+          ThemeProvider.themeOf(context).data.scaffoldBackgroundColor,
       key: _scaffoldKey,
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overscroll) {

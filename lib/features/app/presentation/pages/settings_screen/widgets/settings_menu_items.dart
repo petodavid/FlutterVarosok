@@ -43,11 +43,7 @@ ListViewItem _themeItem(BuildContext context) {
     ),
     image: FaIcon(
       FontAwesomeIcons.palette,
-      color: ThemeProvider
-          .themeOf(context)
-          .data
-          .iconTheme
-          .color,
+      color: ThemeProvider.themeOf(context).data.iconTheme.color,
     ),
     children: [
       SingleChildScrollView(
@@ -74,7 +70,7 @@ ListViewItem _signOutItem(BuildContext context) {
     ),
     children: null,
     onTap: () {
-      showAdaptiveDialobBox(context);
+      showAdaptiveDialogBox(context);
     },
   );
 }

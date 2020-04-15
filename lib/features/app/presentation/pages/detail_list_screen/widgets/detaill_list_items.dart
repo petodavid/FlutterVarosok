@@ -57,11 +57,10 @@ ListViewItem _getHtmlItem(BuildContext context, HtmlTag htmlTag) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              WebViewScreen(
-                html: htmlTag.html,
-                title: htmlTag.title,
-              ),
+          builder: (context) => WebViewScreen(
+            html: htmlTag.html,
+            title: htmlTag.title,
+          ),
         ),
       );
     },
