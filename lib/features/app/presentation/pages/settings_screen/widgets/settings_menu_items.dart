@@ -25,11 +25,8 @@ ListViewItem _languageItem(BuildContext context) {
       color: ThemeProvider.themeOf(context).data.iconTheme.color,
     ),
     children: [
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: _getLangugeWidgets(context),
-        ),
+      Column(
+        children: _getLanguageWidgets(context),
       ),
     ],
   );
@@ -46,11 +43,8 @@ ListViewItem _themeItem(BuildContext context) {
       color: ThemeProvider.themeOf(context).data.iconTheme.color,
     ),
     children: [
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: _getThemeWidgets(context),
-        ),
+      Column(
+        children: _getThemeWidgets(context),
       ),
     ],
   );
@@ -80,15 +74,17 @@ List<Widget> _getThemeWidgets(BuildContext context) {
   for (var themeItem in myThemes) {
     final currentThemeOption = themeItem.options as GradientOptions;
     themeWidgets.add(
-      Padding(
-        padding: EdgeInsets.all(10),
-        child: GestureDetector(
-          onTap: () {
-            ThemeProvider.controllerOf(context).setTheme(themeItem.id);
-          },
+      ListTile(
+        trailing: CheckMark.forThemes(themeItem: themeItem),
+        onTap: () => ThemeProvider.controllerOf(context).setTheme(themeItem.id),
+        title: Text(
+          themeItem.name(context),
+          style: ThemeProvider.themeOf(context).data.textTheme.title,
+        ),
+        leading: CircleAvatar(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              shape: BoxShape.circle,
               gradient: LinearGradient(
                 colors: [
                   currentThemeOption.homeListScreenStartGradient,
@@ -96,11 +92,6 @@ List<Widget> _getThemeWidgets(BuildContext context) {
                 ],
               ),
             ),
-            height: MediaQuery
-                .of(context)
-                .size
-                .height / 6,
-            width: 80,
           ),
         ),
       ),
@@ -109,24 +100,60 @@ List<Widget> _getThemeWidgets(BuildContext context) {
   return themeWidgets;
 }
 
-List<Widget> _getLangugeWidgets(BuildContext context) {
+List<Widget> _getLanguageWidgets(BuildContext context) {
   var appLanguage = Provider.of<AppLanguage>(context);
+
   List<Widget> languageWidgets = [];
   for (var locale in supportedLocales) {
     languageWidgets.add(
-      Padding(
-        padding: EdgeInsets.all(10),
-        child: GestureDetector(
-          onTap: () {
-            appLanguage.changeLanguage(Locale(locale.languageCode));
-          },
-          child: ClipRRect(
+      Container(
+        child: ListTile(
+          trailing: CheckMark.forLanguages(locale: locale),
+          onTap: () => appLanguage.changeLanguage(Locale(locale.languageCode)),
+          title: Text(
+            locale.fullName,
+            style: ThemeProvider
+                .themeOf(context)
+                .data
+                .textTheme
+                .title,
+          ),
+          leading: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Flags.getMiniFlag(locale.countryCode, 50, 50),
+            child: Flags.getMiniFlag(locale.countryCode, 35, 35),
           ),
         ),
       ),
     );
   }
   return languageWidgets;
+}
+
+class CheckMark extends StatelessWidget {
+  final AppTheme themeItem;
+  final Locale locale;
+
+  CheckMark.forThemes({@required this.themeItem, this.locale});
+
+  CheckMark.forLanguages({@required this.locale, this.themeItem});
+
+  @override
+  Widget build(BuildContext context) {
+    final checkMark = FaIcon(FontAwesomeIcons.check);
+    if (themeItem != null) {
+      if (themeItem.id == ThemeProvider
+          .themeOf(context)
+          .id) {
+        return checkMark;
+      }
+    }
+    if (locale != null) {
+      if (locale == AppLocalizations
+          .of(context)
+          .locale) {
+        return checkMark;
+      }
+    }
+    return SizedBox.shrink();
+  }
 }

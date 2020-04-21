@@ -20,5 +20,8 @@
   "invalidPasswordDescription": "Jelszavad legalább 8 karater hosszúságú kell, hogy legyen",
   "authException": "Új vagy itt?",
   "signOutTitle": "Kijelentkezés",
-  "signOutDescription": "Biztos kiszeretnél jelentkezni?"
+  "signOutDescription": "Biztos kiszeretnél jelentkezni?",
+  "strumpfBlue": "Hupikék",
+  "pureDark": "Jófajta fekete",
+  "justOrange": "Narancs vagy mi"
 }

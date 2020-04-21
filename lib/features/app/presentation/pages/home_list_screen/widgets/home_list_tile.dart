@@ -43,8 +43,9 @@ class HomeListTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                DetailListScreen(itemData: items.dataList[index]),
+            builder: (context) => DetailListScreen(
+              itemData: items.dataList[index],
+            ),
           ),
         );
       },

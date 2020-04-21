@@ -9,8 +9,8 @@ import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 class PdfViewScreen extends StatelessWidget {
-  String pdfLink;
-  String title;
+  final String pdfLink;
+  final String title;
 
   PdfViewScreen({@required this.pdfLink, @required this.title});
 

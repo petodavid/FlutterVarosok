@@ -22,5 +22,8 @@
   "authExceptionDescription": "This application is only for existing users",
   "authExceptionDescription": "This application is only for existing users",
   "signOutTitle": "Sign Out",
-  "signOutDescription": "Are you sure, you want to sign out?"
+  "signOutDescription": "Are you sure, you want to sign out?",
+  "strumpfBlue": "Strumpf Blue",
+  "pureDark": "Pure Dark",
+  "justOrange": "Just Orange"
 }

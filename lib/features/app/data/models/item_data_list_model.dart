@@ -42,8 +42,7 @@ class ItemDataModel extends ItemData {
         id: json["id"] == null ? null : json["id"],
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "htmlTags": htmlTags == null
             ? null
             : List<dynamic>.from(htmlTags.map((x) => x.toJson())),

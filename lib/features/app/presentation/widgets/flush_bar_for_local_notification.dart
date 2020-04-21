@@ -68,8 +68,7 @@ class LocalNotificationFlushBar {
       backgroundGradient: LinearGradient(colors: [
         ThemeProvider.optionsOf<GradientOptions>(context)
             .flushBarExceptionGradientStart,
-        ThemeProvider
-            .optionsOf<GradientOptions>(context)
+        ThemeProvider.optionsOf<GradientOptions>(context)
             .flushBarExceptionGradientEnd,
       ]),
     )..show(context);

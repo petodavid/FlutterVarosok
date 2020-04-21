@@ -4,7 +4,7 @@ import 'package:theme_provider/theme_provider.dart';
 
 AppTheme orangeTheme() {
   return AppTheme(
-    id: "orangeheme",
+    id: "orangetheme",
     description: "default light blue theme",
     options: GradientOptions(Color(0xfffcbb6d), Color(0xffd8737f),
         Color(0xffEB3349), Color(0xffF45C43)),

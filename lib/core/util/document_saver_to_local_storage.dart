@@ -33,7 +33,7 @@ Future<bool> _saveOnIos(String urlToSave, String fileTitle) async {
   try {
     Directory docDir = await getApplicationDocumentsDirectory();
     final pdfFile = await http.get(urlToSave);
-    final file = File('${docDir.path}/${fileTitle}.pdf');
+    final file = File('${docDir.path}/$fileTitle.pdf');
     file.writeAsBytesSync(pdfFile.bodyBytes);
     return Future.value(true);
   } on Exception catch (e) {

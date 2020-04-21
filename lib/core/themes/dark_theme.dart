@@ -4,7 +4,7 @@ import 'package:theme_provider/theme_provider.dart';
 
 AppTheme darkTheme() {
   return AppTheme(
-    id: "darkpurpletheme",
+    id: "darktheme",
     description: "default light blue theme",
     options: GradientOptions(Color(0xff262626), Color(0xff262626),
         Color(0xffEB3349), Color(0xffF45C43)),

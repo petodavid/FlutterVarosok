@@ -6,8 +6,7 @@ import 'package:theme_provider/theme_provider.dart';
 
 class DetailListScreen extends StatelessWidget {
   final ItemData itemData;
-
-  DetailListScreen({this.itemData});
+  DetailListScreen({@required this.itemData});
 
   @override
   Widget build(BuildContext context) {

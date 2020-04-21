@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/core/themes/theme_options.dart';
+import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
+import 'package:jpt_app/features/app/presentation/pages/detail_list_screen/detail_list_screen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 class QrScannerScreen extends StatefulWidget {
+  final ItemDataList itemDataList;
+
+  QrScannerScreen({this.itemDataList});
+
   @override
   _QrScannerScreenState createState() => _QrScannerScreenState();
 }
 
 class _QrScannerScreenState extends State<QrScannerScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  String qrText;
   QRViewController controller;
 
   @override
@@ -62,10 +67,21 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        qrText = scanData;
-        print(qrText);
-      });
+      for (var item in widget.itemDataList.dataList) {
+        if (scanData == item.id) {
+          controller.dispose();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailListScreen(
+                itemData: item,
+              ),
+            ),
+          );
+
+          return;
+        }
+      }
     });
   }
 
