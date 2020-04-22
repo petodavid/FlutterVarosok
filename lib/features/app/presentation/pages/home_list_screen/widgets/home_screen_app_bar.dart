@@ -9,9 +9,9 @@ AppBar homeListAppBar(BuildContext context) {
   return AppBar(
     title: Text(
       AppLocalizations.of(context).translate('content'),
-      style: TextStyle(
-        color: Colors.white,
-      ),
+      style: ThemeProvider.themeOf(context).data.textTheme.title.copyWith(
+            color: Colors.white,
+          ),
     ),
     actions: <Widget>[
       IconButton(

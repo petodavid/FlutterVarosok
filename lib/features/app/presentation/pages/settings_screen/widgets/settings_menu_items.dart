@@ -54,9 +54,11 @@ ListViewItem _signOutItem(BuildContext context) {
   return ListViewItem(
     title: Text(
       AppLocalizations.of(context).translate('signOut'),
-      style: TextStyle(
-        color: Colors.red,
-      ),
+      style: ThemeProvider.themeOf(context)
+          .data
+          .textTheme
+          .title
+          .copyWith(color: Colors.red),
     ),
     image: FaIcon(
       FontAwesomeIcons.signOutAlt,

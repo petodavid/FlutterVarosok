@@ -45,6 +45,7 @@ dependencies:
   theme_provider: ^0.3.3
   flutter_device_locale: ^0.4.0
   flag: ^1.0.3
+  google_fonts: ^0.6.2
 
 
 

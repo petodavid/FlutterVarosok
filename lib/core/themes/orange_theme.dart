@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:theme_provider/theme_provider.dart';
 
@@ -17,7 +18,7 @@ AppTheme orangeTheme() {
         color: Color(0xffab6c82),
       ),
       textTheme: TextTheme(
-        title: TextStyle(
+        title: GoogleFonts.syncopate(
           color: Colors.black,
         ),
       ),

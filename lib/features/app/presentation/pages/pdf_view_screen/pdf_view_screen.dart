@@ -88,8 +88,14 @@ class PdfViewScreen extends StatelessWidget {
               ),
               Text(
                 AppLocalizations.of(context).translate('save'),
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: ThemeProvider.themeOf(context)
+                    .data
+                    .textTheme
+                    .title
+                    .copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
               )
             ],
           ),

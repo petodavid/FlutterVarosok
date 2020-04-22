@@ -25,7 +25,12 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).translate('qr')),
+        title: Text(
+          AppLocalizations.of(context).translate('qr'),
+          style: ThemeProvider.themeOf(context).data.textTheme.title.copyWith(
+                color: Colors.white,
+              ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

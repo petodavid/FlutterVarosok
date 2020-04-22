@@ -106,10 +106,7 @@ extension RemoveEmptyDataLists on ItemDataListModel {
   void _removeEmptyOrNullTitleItems() {
     this
         .dataList
-        .removeWhere((item) =>
-    item.title == null || item.title
-        .trim()
-        .isEmpty);
+        .removeWhere((item) => item.title == null || item.title.trim().isEmpty);
   }
 
   void _removeEmptyOrNullItemsIdArrays() {

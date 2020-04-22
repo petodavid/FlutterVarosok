@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 import 'theme_options.dart';
@@ -18,7 +20,7 @@ AppTheme blueTheme() {
         color: Colors.blueAccent,
       ),
       textTheme: TextTheme(
-        title: TextStyle(
+        title: GoogleFonts.handlee(
           color: Colors.black,
         ),
       ),
