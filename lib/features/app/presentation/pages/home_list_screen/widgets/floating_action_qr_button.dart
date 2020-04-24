@@ -4,7 +4,8 @@ import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/presentation/pages/qr_code_scanner_screen/qr_code_scanner_screen.dart';
 import 'package:theme_provider/theme_provider.dart';
 
-Widget qrScannerButton(BuildContext context, ItemDataList itemDataList) {
+Widget qrScannerButton(
+    BuildContext context, Map<String, ItemData> itemDataList) {
   return FloatingActionButton(
     child: FaIcon(FontAwesomeIcons.qrcode),
     backgroundColor: ThemeProvider.themeOf(context)

@@ -20,7 +20,7 @@ class ItemListDataRepositoryImpl implements ItemListDataRepository {
   });
 
   @override
-  Future<Either<Failure, ItemDataList>> getItemListData() async {
+  Future<Either<Failure, Map<String, ItemData>>> getItemListData() async {
     if (await networkInfo.isConnected) {
       try {
         var remoteItemListData = await remoteDataSource.getItemListData();

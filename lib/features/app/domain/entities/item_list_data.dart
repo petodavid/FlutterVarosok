@@ -1,31 +1,18 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
-
-class ItemDataList extends Equatable {
-  final List<ItemData> dataList;
-  ItemDataList({
-    @required this.dataList,
-  });
-
-  @override
-  List<Object> get props => [dataList];
-}
 
 class ItemData extends Equatable {
   final List<HtmlTag> htmlTags;
   final List<PdfLink> pdfLinks;
   final String title;
-  final String id;
 
   ItemData({
     this.htmlTags,
     this.pdfLinks,
     this.title,
-    this.id,
   });
 
   @override
-  List<Object> get props => [htmlTags, pdfLinks, title, id];
+  List<Object> get props => [htmlTags, pdfLinks, title];
 }
 
 class HtmlTag extends Equatable {

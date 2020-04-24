@@ -13,7 +13,7 @@ import 'package:jpt_app/injection_container.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 class HomeListScreen extends StatelessWidget {
-  static ItemDataList itemDataList;
+  static Map<String, ItemData> itemDataList;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +46,7 @@ class HomeListScreen extends StatelessWidget {
             return HomeListView(
               items: state.itemDataList,
             );
+            return Container();
           } else if (state is Error) {
             return Container();
           }

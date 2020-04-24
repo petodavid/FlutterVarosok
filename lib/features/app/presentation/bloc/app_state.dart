@@ -13,8 +13,10 @@ class Empty extends AppState {}
 class Loading extends AppState {}
 
 class Loaded extends AppState {
-  final ItemDataList itemDataList;
+  final Map<String, ItemData> itemDataList;
+
   Loaded({@required this.itemDataList});
+
   @override
   List<Object> get props => [itemDataList];
 }

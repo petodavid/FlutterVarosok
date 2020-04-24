@@ -7,7 +7,8 @@ import 'package:theme_provider/theme_provider.dart';
 import 'home_list_tile.dart';
 
 class HomeListView extends StatelessWidget {
-  final ItemDataList items;
+  final Map<String, ItemData> items;
+
   const HomeListView({
     Key key,
     @required this.items,
@@ -21,7 +22,7 @@ class HomeListView extends StatelessWidget {
                 indent: 50,
                 color: ThemeProvider.themeOf(context).data.iconTheme.color,
               ),
-          itemCount: items.dataList.length,
+          itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
             return AnimationConfiguration.staggeredList(
               position: index,

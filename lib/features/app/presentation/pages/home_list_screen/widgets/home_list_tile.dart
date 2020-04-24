@@ -6,7 +6,8 @@ import 'package:theme_provider/theme_provider.dart';
 
 class HomeListTile extends StatelessWidget {
   HomeListTile({@required this.items, @required this.index});
-  final ItemDataList items;
+
+  final Map<String, ItemData> items;
   final int index;
 
   @override
@@ -26,7 +27,7 @@ class HomeListTile extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
           child: Text(
-            items.dataList[index].title[0],
+            items.values.elementAt(index).title[0],
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -36,15 +37,21 @@ class HomeListTile extends StatelessWidget {
         ),
       ),
       title: Text(
-        items.dataList[index].title,
-        style: ThemeProvider.themeOf(context).data.textTheme.title,
+        items.values
+            .elementAt(index)
+            .title,
+        style: ThemeProvider
+            .themeOf(context)
+            .data
+            .textTheme
+            .title,
       ),
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => DetailListScreen(
-              itemData: items.dataList[index],
+              itemData: items.values.elementAt(index),
             ),
           ),
         );

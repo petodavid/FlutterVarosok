@@ -1,33 +1,24 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 
-ItemDataListModel itemDataListModelFromJson(String str) => ItemDataListModel(
-    itemDataList: List<ItemDataModel>.from(
-        json.decode(str).map((x) => ItemDataModel.fromJson(x))));
+Map<String, ItemDataModel> itemDataModelFromJson(String str) =>
+    Map.from(json.decode(str)).map((k, v) =>
+        MapEntry<String, ItemDataModel>(k, ItemDataModel.fromJson(v)));
 
-String itemDatalistModeToJson(ItemDataListModel data) =>
-    json.encode(List<dynamic>.from(data.itemDataList.map((x) => x.toJson())));
-
-class ItemDataListModel extends ItemDataList {
-  final List<ItemDataModel> itemDataList;
-  ItemDataListModel({@required this.itemDataList})
-      : super(dataList: itemDataList);
-}
+String itemDataMapModelToJson(Map<String, ItemDataModel> data) => json.encode(
+    Map.from(data).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())));
 
 class ItemDataModel extends ItemData {
   final List<HtmlTagModel> htmlTags;
   final List<PdfLinkModel> pdfLinks;
   final String title;
-  final String id;
 
   ItemDataModel({
     this.htmlTags,
     this.pdfLinks,
     this.title,
-    this.id,
-  }) : super(htmlTags: htmlTags, pdfLinks: pdfLinks, title: title, id: id);
+  }) : super(htmlTags: htmlTags, pdfLinks: pdfLinks, title: title);
 
   factory ItemDataModel.fromJson(Map<String, dynamic> json) => ItemDataModel(
         htmlTags: json["htmlTags"] == null
@@ -39,7 +30,6 @@ class ItemDataModel extends ItemData {
             : List<PdfLinkModel>.from(
                 json["pdfLinks"].map((x) => PdfLinkModel.fromJson(x))),
         title: json["title"] == null ? null : json["title"],
-        id: json["id"] == null ? null : json["id"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,7 +40,6 @@ class ItemDataModel extends ItemData {
             ? null
             : List<dynamic>.from(pdfLinks.map((x) => x.toJson())),
         "title": title == null ? null : title,
-        "id": id == null ? null : id,
       };
 }
 
@@ -94,32 +83,32 @@ class PdfLinkModel extends PdfLink {
       };
 }
 
-extension RemoveEmptyDataLists on ItemDataListModel {
+extension RemoveEmptyDataLists on Map<String, ItemDataModel> {
   void removeEmptyDataLists() {
     _removeEmptyOrNullTitleItems();
-    _removeEmptyOrNullItemsIdArrays();
+    _removeEmptyOrNullKeys();
     _removeEmptyOrNullPdfLinkArrayTargetLinkItems();
     _removeEmptyOrNullHtmlTagsArrayHtmlItems();
     _removeEmptyOrNullPdfLinkAndHtmlTagArrays();
   }
 
   void _removeEmptyOrNullTitleItems() {
-    this
-        .dataList
-        .removeWhere((item) => item.title == null || item.title.trim().isEmpty);
+    this.removeWhere(
+            (key, value) =>
+        value.title == null || value.title
+            .trim()
+            .isEmpty);
   }
 
-  void _removeEmptyOrNullItemsIdArrays() {
-    this
-        .dataList
-        .removeWhere((item) =>
-    item.id == null || item.id
+  _removeEmptyOrNullKeys() {
+    this.removeWhere((key, value) =>
+    key == null || key
         .trim()
         .isEmpty);
   }
 
   void _removeEmptyOrNullPdfLinkArrayTargetLinkItems() {
-    for (var item in this.dataList) {
+    for (var item in this.values) {
       item.pdfLinks
           .removeWhere((item) =>
       item.link == null || item.link
@@ -129,15 +118,18 @@ extension RemoveEmptyDataLists on ItemDataListModel {
   }
 
   void _removeEmptyOrNullHtmlTagsArrayHtmlItems() {
-    for (var item in this.dataList) {
+    for (var item in this.values) {
       item.htmlTags
-          .removeWhere((item) => item.html == null || item.html.trim().isEmpty);
+          .removeWhere((item) =>
+      item.html == null || item.html
+          .trim()
+          .isEmpty);
     }
   }
 
   void _removeEmptyOrNullPdfLinkAndHtmlTagArrays() {
-    this.dataList.removeWhere((item) =>
-        (item.pdfLinks == null || item.pdfLinks.isEmpty) &&
-        (item.htmlTags == null || item.htmlTags.isEmpty));
+    this.removeWhere((key, value) =>
+    (value.pdfLinks == null || value.pdfLinks.isEmpty) &&
+        (value.htmlTags == null || value.htmlTags.isEmpty));
   }
 }

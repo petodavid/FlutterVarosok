@@ -54,12 +54,12 @@ void main() {
   });
 
   group('getItemDataList', () {
-    final pdfLinks = [PdfLinkModel(title: 'title', link: 'links')];
-    final testHtml = [HtmlTagModel(title: 'tags', html: 'htmlCode')];
-    final itemData = [
-      ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
-    ];
-    final tItemDataList = ItemDataListModel(itemDataList: itemData);
+    final pdfLinks = [PdfLinkModel(title: 'title', link: 'link')];
+    final testHtml = [HtmlTagModel(title: 'title', html: 'htmlCode')];
+    Map<String, ItemDataModel> tItemDataListModel = {
+      '5veu2czb24':
+          ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
+    };
 
     test('should check if the device is online', () async {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
@@ -72,10 +72,10 @@ void main() {
         'should return remote data when the call to remote data source is successful',
         () async {
           when(mockRemoteDataSource.getItemListData())
-              .thenAnswer((_) async => tItemDataList);
+              .thenAnswer((_) async => tItemDataListModel);
           final result = await repository.getItemListData();
           verify(mockRemoteDataSource.getItemListData());
-          expect(result, equals(Right(tItemDataList)));
+          expect(result, equals(Right(tItemDataListModel)));
         },
       );
 
@@ -83,10 +83,10 @@ void main() {
         'should cache the data locally when the call to remote data source is successful',
         () async {
           when(mockRemoteDataSource.getItemListData())
-              .thenAnswer((_) async => tItemDataList);
+              .thenAnswer((_) async => tItemDataListModel);
           await repository.getItemListData();
           verify(mockRemoteDataSource.getItemListData());
-          verify(mockLocalDataSource.cacheItemListData(tItemDataList));
+          verify(mockLocalDataSource.cacheItemListData(tItemDataListModel));
         },
       );
 
@@ -107,11 +107,11 @@ void main() {
         'should return last locally cached data when the cached data is present',
         () async {
           when(mockLocalDataSource.getLastItemListData())
-              .thenAnswer((_) async => tItemDataList);
+              .thenAnswer((_) async => tItemDataListModel);
           final result = await repository.getItemListData();
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastItemListData());
-          expect(result, equals(Right(tItemDataList)));
+          expect(result, equals(Right(tItemDataListModel)));
         },
       );
 

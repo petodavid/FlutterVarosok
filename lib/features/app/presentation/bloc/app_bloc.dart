@@ -31,7 +31,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 }
 
 Stream<AppState> _eitherLoadedOrErrorState(
-  Either<Failure, ItemDataList> either,
+  Either<Failure, Map<String, ItemData>> either,
 ) async* {
   yield either.fold(
     (failure) => Error(message: _mapFailureToMessage(failure)),

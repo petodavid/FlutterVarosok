@@ -114,11 +114,7 @@ List<Widget> _getLanguageWidgets(BuildContext context) {
           onTap: () => appLanguage.changeLanguage(Locale(locale.languageCode)),
           title: Text(
             locale.fullName,
-            style: ThemeProvider
-                .themeOf(context)
-                .data
-                .textTheme
-                .title,
+            style: ThemeProvider.themeOf(context).data.textTheme.title,
           ),
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(10),

@@ -1,5 +1,5 @@
-[
-  {
+{
+  "5veu2czb24": {
     "htmlTags": [
       {
         "html": "htmlCode",
@@ -12,23 +12,6 @@
         "title": "title"
       }
     ],
-    "title": "title",
-    "id": "id"
-  },
-  {
-    "htmlTags": [
-      {
-        "html": "htmlCode",
-        "title": "title"
-      }
-    ],
-    "pdfLinks": [
-      {
-        "link": "link",
-        "title": "title"
-      }
-    ],
-    "title": "title",
-    "id": "id"
+    "title": "title"
   }
-]
+}
