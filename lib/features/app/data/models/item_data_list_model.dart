@@ -94,10 +94,7 @@ extension RemoveEmptyDataLists on Map<String, ItemDataModel> {
 
   void _removeEmptyOrNullTitleItems() {
     this.removeWhere(
-            (key, value) =>
-        value.title == null || value.title
-            .trim()
-            .isEmpty);
+        (key, value) => value.title == null || value.title.trim().isEmpty);
   }
 
   _removeEmptyOrNullKeys() {

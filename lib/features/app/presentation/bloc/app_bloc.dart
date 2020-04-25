@@ -4,16 +4,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:jpt_app/core/error/failures.dart';
 import 'package:jpt_app/core/usecase.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
+import 'package:jpt_app/features/app/domain/usecases/get_item_data_by_id.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_list_data.dart';
 
 import 'bloc.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final GetItemDataList getItemDataList;
+  final GetItemDataById getItemDataById;
+
   AppBloc({
     @required GetItemDataList getItemDataList,
+    @required GetItemDataById getItemDataById,
   })  : assert(getItemDataList != null),
-        getItemDataList = getItemDataList;
+        assert(getItemDataById != null),
+        getItemDataList = getItemDataList,
+        getItemDataById = getItemDataById;
 
   @override
   AppState get initialState => Empty();
@@ -22,20 +28,31 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   Stream<AppState> mapEventToState(
     AppEvent event,
   ) async* {
-    if (event is GetDataListForItems) {
+    if (event is GetForItemDataById) {
+      yield Loading();
+      final failureOrItemData = await getItemDataById(Params(id: event.id));
+      yield* _eitherItemDataByIdOrErrorState(failureOrItemData);
+    } else if (event is GetDataListForItems) {
       yield Loading();
       final failureOrItemDataList = await getItemDataList(NoParams());
-      yield* _eitherLoadedOrErrorState(failureOrItemDataList);
+      yield* _eitherItemDataListOrErrorState(failureOrItemDataList);
     }
   }
 }
 
-Stream<AppState> _eitherLoadedOrErrorState(
-  Either<Failure, Map<String, ItemData>> either,
-) async* {
+Stream<AppState> _eitherItemDataListOrErrorState(
+    Either<Failure, Map<String, ItemData>> either,) async* {
   yield either.fold(
-    (failure) => Error(message: _mapFailureToMessage(failure)),
-    (itemDataList) => Loaded(itemDataList: itemDataList),
+        (failure) => Error(message: _mapFailureToMessage(failure)),
+        (itemDataList) => LoadedItemDataList(itemDataList: itemDataList),
+  );
+}
+
+Stream<AppState> _eitherItemDataByIdOrErrorState(
+    Either<Failure, ItemData> either,) async* {
+  yield either.fold(
+        (failure) => Error(message: _mapFailureToMessage(failure)),
+        (itemData) => LoadedItemDataById(itemData: itemData),
   );
 }
 

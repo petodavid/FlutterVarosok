@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jpt_app/features/app/presentation/bloc/app_bloc.dart';
 import 'package:jpt_app/features/app/presentation/bloc/app_event.dart';
 import 'package:jpt_app/features/app/presentation/bloc/app_state.dart';
@@ -13,8 +13,6 @@ import 'package:jpt_app/injection_container.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 class HomeListScreen extends StatelessWidget {
-  static Map<String, ItemData> itemDataList;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +21,7 @@ class HomeListScreen extends StatelessWidget {
       appBar: homeListAppBar(context),
       floatingActionButton: Padding(
         padding: EdgeInsets.all(10),
-        child: qrScannerButton(context, itemDataList),
+        child: qrScannerButton(context),
       ),
       body: buildBody(),
     );
@@ -38,17 +36,19 @@ class HomeListScreen extends StatelessWidget {
             BlocProvider.of<AppBloc>(context).add(GetDataListForItems());
             return Container();
           } else if (state is Loading) {
-            return Center(
-              child: AdaptiveCircularProgressIndicator(),
-            );
-          } else if (state is Loaded) {
-            itemDataList = state.itemDataList;
+            return AdaptiveCircularProgressIndicator();
+          } else if (state is LoadedItemDataList) {
             return HomeListView(
               items: state.itemDataList,
             );
-            return Container();
           } else if (state is Error) {
-            return Container();
+            return Center(
+              child: FaIcon(
+                FontAwesomeIcons.exclamationCircle,
+                size: 80,
+                color: Colors.red,
+              ),
+            );
           }
           return Container();
         },

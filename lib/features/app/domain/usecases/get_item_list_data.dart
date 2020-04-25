@@ -10,6 +10,6 @@ class GetItemDataList extends UseCase<Map<String, ItemData>, NoParams> {
   GetItemDataList(this.repository);
 
   Future<Either<Failure, Map<String, ItemData>>> call(NoParams params) async {
-    return await repository.getItemListData();
+    return await repository.getItemDataList();
   }
 }

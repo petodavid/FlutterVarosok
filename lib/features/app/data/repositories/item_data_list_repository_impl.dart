@@ -20,11 +20,11 @@ class ItemListDataRepositoryImpl implements ItemListDataRepository {
   });
 
   @override
-  Future<Either<Failure, Map<String, ItemData>>> getItemListData() async {
+  Future<Either<Failure, Map<String, ItemData>>> getItemDataList() async {
     if (await networkInfo.isConnected) {
       try {
-        var remoteItemListData = await remoteDataSource.getItemListData();
-        localDataSource.cacheItemListData(remoteItemListData);
+        var remoteItemListData = await remoteDataSource.getItemDataList();
+        localDataSource.cacheItemDataList(remoteItemListData);
         return Right(remoteItemListData);
       } on ServerException {
         return Left(ServerFailure());
@@ -32,6 +32,25 @@ class ItemListDataRepositoryImpl implements ItemListDataRepository {
     } else {
       try {
         final localItemListData = await localDataSource.getLastItemListData();
+        return Right(localItemListData);
+      } on CacheExcepiton {
+        return Left(CacheFaliure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, ItemData>> getItemDataById(String id) async {
+    if (await networkInfo.isConnected) {
+      try {
+        var remoteItemDataById = await remoteDataSource.getItemDataById(id);
+        return Right(remoteItemDataById);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localItemListData = await localDataSource.getLastItemDataById();
         return Right(localItemListData);
       } on CacheExcepiton {
         return Left(CacheFaliure());

@@ -49,12 +49,12 @@ void main() {
     final testHtml = [HtmlTagModel(title: 'title', html: 'htmlCode')];
     Map<String, ItemDataModel> tItemDataListModel = {
       '5veu2czb24':
-      ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
+          ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
     };
     test(
       'should call SharedPreferences to cache the data',
-          () async {
-        dataSource.cacheItemListData(tItemDataListModel);
+      () async {
+        dataSource.cacheItemDataList(tItemDataListModel);
         final expectedJsonString = itemDataMapModelToJson(tItemDataListModel);
         verify(mockSharedPreferences.setString(
             CACHED_ITEM_DATA_LIST, expectedJsonString));

@@ -63,7 +63,7 @@ void main() {
 
     test('should check if the device is online', () async {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      repository.getItemListData();
+      repository.getItemDataList();
       verify(mockNetworkInfo.isConnected);
     });
 
@@ -71,10 +71,10 @@ void main() {
       test(
         'should return remote data when the call to remote data source is successful',
         () async {
-          when(mockRemoteDataSource.getItemListData())
+          when(mockRemoteDataSource.getItemDataList())
               .thenAnswer((_) async => tItemDataListModel);
-          final result = await repository.getItemListData();
-          verify(mockRemoteDataSource.getItemListData());
+          final result = await repository.getItemDataList();
+          verify(mockRemoteDataSource.getItemDataList());
           expect(result, equals(Right(tItemDataListModel)));
         },
       );
@@ -82,21 +82,21 @@ void main() {
       test(
         'should cache the data locally when the call to remote data source is successful',
         () async {
-          when(mockRemoteDataSource.getItemListData())
+          when(mockRemoteDataSource.getItemDataList())
               .thenAnswer((_) async => tItemDataListModel);
-          await repository.getItemListData();
-          verify(mockRemoteDataSource.getItemListData());
-          verify(mockLocalDataSource.cacheItemListData(tItemDataListModel));
+          await repository.getItemDataList();
+          verify(mockRemoteDataSource.getItemDataList());
+          verify(mockLocalDataSource.cacheItemDataList(tItemDataListModel));
         },
       );
 
       test(
         'should return server failure when the call to remote data source is unsuccessful',
         () async {
-          when(mockRemoteDataSource.getItemListData())
+          when(mockRemoteDataSource.getItemDataList())
               .thenThrow(ServerException());
-          final result = await repository.getItemListData();
-          verify(mockRemoteDataSource.getItemListData());
+          final result = await repository.getItemDataList();
+          verify(mockRemoteDataSource.getItemDataList());
           verifyZeroInteractions(mockLocalDataSource);
           expect(result, equals(Left(ServerFailure())));
         },
@@ -108,7 +108,7 @@ void main() {
         () async {
           when(mockLocalDataSource.getLastItemListData())
               .thenAnswer((_) async => tItemDataListModel);
-          final result = await repository.getItemListData();
+          final result = await repository.getItemDataList();
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastItemListData());
           expect(result, equals(Right(tItemDataListModel)));
@@ -120,7 +120,7 @@ void main() {
         () async {
           when(mockLocalDataSource.getLastItemListData())
               .thenThrow(CacheExcepiton());
-          final result = await repository.getItemListData();
+          final result = await repository.getItemDataList();
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastItemListData());
           expect(result, equals(Left(CacheFaliure())));

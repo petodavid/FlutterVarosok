@@ -7,4 +7,13 @@ abstract class AppEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetForItemDataById extends AppEvent {
+  final String id;
+
+  GetForItemDataById(this.id);
+
+  @override
+  List<Object> get props => [id];
+}
+
 class GetDataListForItems extends AppEvent {}

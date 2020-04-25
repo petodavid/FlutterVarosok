@@ -139,9 +139,7 @@ class CheckMark extends StatelessWidget {
   Widget build(BuildContext context) {
     final checkMark = FaIcon(FontAwesomeIcons.check);
     if (themeItem != null) {
-      if (themeItem.id == ThemeProvider
-          .themeOf(context)
-          .id) {
+      if (themeItem.id == ThemeProvider.themeOf(context).id) {
         return checkMark;
       }
     }

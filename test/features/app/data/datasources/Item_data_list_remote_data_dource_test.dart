@@ -38,7 +38,7 @@ void main() {
         when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
           (_) async => http.Response(fixture('item_data_list.json'), 200),
         );
-        dataSource.getItemListData();
+        dataSource.getItemDataList();
         verify(mockHttpClient.get('https://jptapp-4228f.firebaseio.com/.json',
             headers: {'Content-Type': 'application/json'}));
       },
@@ -49,8 +49,8 @@ void main() {
       () async {
         setUpMockHttpClientSuccess200();
         final tItemDataListModel =
-            itemDataModelFromJson(fixture('item_data_list.json'));
-        final result = await dataSource.getItemListData();
+        itemDataModelFromJson(fixture('item_data_list.json'));
+        final result = await dataSource.getItemDataList();
         expect(result, equals(tItemDataListModel));
       },
     );
@@ -59,7 +59,7 @@ void main() {
       'should throw a ServerException when the response code is 404 or other',
       () async {
         setUpMockHttpClientFailure404();
-        expect(() => dataSource.getItemListData(),
+        expect(() => dataSource.getItemDataList(),
             throwsA(TypeMatcher<ServerException>()));
       },
     );

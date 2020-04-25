@@ -12,18 +12,29 @@ class Empty extends AppState {}
 
 class Loading extends AppState {}
 
-class Loaded extends AppState {
+class LoadedItemDataList extends AppState {
   final Map<String, ItemData> itemDataList;
 
-  Loaded({@required this.itemDataList});
+  LoadedItemDataList({@required this.itemDataList});
 
   @override
   List<Object> get props => [itemDataList];
 }
 
+class LoadedItemDataById extends AppState {
+  final ItemData itemData;
+
+  LoadedItemDataById({@required this.itemData});
+
+  @override
+  List<Object> get props => [itemData];
+}
+
 class Error extends AppState {
   final String message;
+
   Error({@required this.message});
+
   @override
   List<Object> get props => [message];
 }

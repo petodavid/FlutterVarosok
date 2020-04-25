@@ -25,12 +25,12 @@ void main() {
   };
 
   test('should get the list data from the repository', () async {
-    when(mockItemListDataRepository.getItemListData())
+    when(mockItemListDataRepository.getItemDataList())
         .thenAnswer((_) async => Right(tItemDataListModel));
 
     final result = await usecase(NoParams());
     expect(result, Right(tItemDataListModel));
-    verify(mockItemListDataRepository.getItemListData());
+    verify(mockItemListDataRepository.getItemDataList());
     verifyNoMoreInteractions(mockItemListDataRepository);
   });
 }

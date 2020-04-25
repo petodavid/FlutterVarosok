@@ -1,22 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/core/themes/theme_options.dart';
-import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
+import 'package:jpt_app/features/app/presentation/bloc/app_bloc.dart';
+import 'package:jpt_app/features/app/presentation/bloc/app_event.dart';
+import 'package:jpt_app/features/app/presentation/bloc/app_state.dart';
+import 'package:jpt_app/features/app/presentation/pages/detail_list_screen/detail_list_screen.dart';
+import 'package:jpt_app/features/app/presentation/pages/home_list_screen/home_list_screen.dart';
+import 'package:jpt_app/features/app/presentation/widgets/adaptive_circular_indicator.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
 import 'package:theme_provider/theme_provider.dart';
 
-class QrScannerScreen extends StatefulWidget {
-  final Map<String, ItemData> itemDataList;
+import '../../../../../injection_container.dart';
 
-  QrScannerScreen({this.itemDataList});
-
+class QrScannerScreen extends StatelessWidget {
   @override
-  _QrScannerScreenState createState() => _QrScannerScreenState();
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return BlocProvider(
+      create: (_) => sl<AppBloc>(),
+      child: BlocBuilder<AppBloc, AppState>(
+        builder: (context, state) {
+          if (state is Empty) {
+            return QrScanningUi();
+          } else if (state is Loading) {
+            return AdaptiveCircularProgressIndicator();
+          } else if (state is LoadedItemDataById) {
+            return DetailListScreen(itemData: state.itemData);
+          } else if (state is Error) {
+            Navigator.pop(context);
+          }
+          return HomeListScreen();
+        },
+      ),
+    );
+  }
 }
 
-class _QrScannerScreenState extends State<QrScannerScreen> {
+class QrScanningUi extends StatefulWidget {
+  @override
+  _QrScanningUiState createState() => _QrScanningUiState();
+
+  const QrScanningUi({
+    Key key,
+  }) : super(key: key);
+}
+
+class _QrScanningUiState extends State<QrScanningUi> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+
   QRViewController controller;
 
   @override
@@ -71,21 +104,8 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      for (var item in widget.itemDataList.values) {
-//        if (scanData == item.id) {
-//          controller.dispose();
-//          Navigator.pushReplacement(
-//            context,
-//            MaterialPageRoute(
-//              builder: (context) => DetailListScreen(
-//                itemData: item,
-//              ),
-//            ),
-//          );
-//
-//          return;
-//        }
-      }
+      BlocProvider.of<AppBloc>(context).add(GetForItemDataById(scanData));
+      dispose();
     });
   }
 
