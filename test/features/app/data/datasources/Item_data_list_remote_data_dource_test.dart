@@ -49,7 +49,7 @@ void main() {
       () async {
         setUpMockHttpClientSuccess200();
         final tItemDataListModel =
-        itemDataModelFromJson(fixture('item_data_list.json'));
+            itemDataModelFromJson(fixture('item_data_list.json'));
         final result = await dataSource.getItemDataList();
         expect(result, equals(tItemDataListModel));
       },

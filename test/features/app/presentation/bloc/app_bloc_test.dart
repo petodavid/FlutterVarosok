@@ -14,11 +14,14 @@ class MockGetItemDataList extends Mock implements GetItemDataList {}
 class MockGetItemDataById extends Mock implements GetItemDataById {}
 
 void main() {
+  // ignore: close_sinks
   AppBloc bloc;
   MockGetItemDataList mockGetItemDataList;
   MockGetItemDataById mockGetItemDataById;
   setUp(() {
     mockGetItemDataList = MockGetItemDataList();
+    mockGetItemDataById = MockGetItemDataById();
+
     bloc = AppBloc(
         getItemDataList: mockGetItemDataList,
         getItemDataById: mockGetItemDataById);

@@ -144,9 +144,7 @@ class CheckMark extends StatelessWidget {
       }
     }
     if (locale != null) {
-      if (locale == AppLocalizations
-          .of(context)
-          .locale) {
+      if (locale == AppLocalizations.of(context).locale) {
         return checkMark;
       }
     }
