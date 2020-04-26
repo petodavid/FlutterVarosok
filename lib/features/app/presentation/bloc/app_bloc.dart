@@ -50,10 +50,11 @@ Stream<AppState> _eitherItemDataListOrErrorState(
 }
 
 Stream<AppState> _eitherItemDataByIdOrErrorState(
-    Either<Failure, ItemData> either,) async* {
+  Either<Failure, ItemData> either,
+) async* {
   yield either.fold(
-        (failure) => Error(message: _mapFailureToMessage(failure)),
-        (itemData) => LoadedItemDataById(itemData: itemData),
+    (failure) => Error(message: _mapFailureToMessage(failure)),
+    (itemData) => LoadedItemDataById(itemData: itemData),
   );
 }
 

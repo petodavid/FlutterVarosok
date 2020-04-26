@@ -73,4 +73,19 @@ class LocalNotificationFlushBar {
       ]),
     )..show(context);
   }
+
+  void showSavedPDFNotification(String savedLocation) {
+    Flushbar(
+      flushbarPosition: FlushbarPosition.BOTTOM,
+      duration: Duration(seconds: 4),
+      icon: Center(
+          child: FaIcon(
+        FontAwesomeIcons.solidSave,
+        color: Colors.white,
+      )),
+      title: AppLocalizations.of(context).translate('saved'),
+      message: savedLocation,
+      backgroundColor: Colors.green,
+    )..show(context);
+  }
 }

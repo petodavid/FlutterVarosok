@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/core/themes/theme_options.dart';
 import 'package:jpt_app/core/util/document_saver_to_local_storage.dart';
+import 'package:jpt_app/features/app/presentation/widgets/flush_bar_for_local_notification.dart';
 import 'package:jpt_app/features/app/presentation/widgets/gradient_app_bar_with_title.dart';
 import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
 import 'package:theme_provider/theme_provider.dart';
@@ -68,7 +69,10 @@ class PdfViewScreen extends StatelessWidget {
       heightFactor: 0.5,
       child: GestureDetector(
         onTap: () async {
-          await savePFDDocumentToLocalStorage(pdfLink, title);
+          if (await savePFDDocumentToLocalStorage(pdfLink, title, context)) {
+            LocalNotificationFlushBar(context: context)
+                .showSavedPDFNotification(title);
+          }
         },
         child: Container(
           decoration: BoxDecoration(
