@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jpt_app/core/auth/currest_user.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
+import 'package:jpt_app/features/app/data/repositories/user_repository_impl.dart';
 import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
 
 void showAdaptiveDialogBox(BuildContext context) {
@@ -78,8 +78,8 @@ void _showMaterialSimpleDialog(BuildContext context) {
       });
 }
 
-void _signOutAndNavigateToLogInScreen(BuildContext context) {
-  CurrentUser().signOut();
+void _signOutAndNavigateToLogInScreen(BuildContext context) async {
+  await auth.signOut();
   Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(

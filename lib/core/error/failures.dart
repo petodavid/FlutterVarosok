@@ -7,4 +7,10 @@ abstract class Failure extends Equatable {
 
 class ServerFailure extends Failure {}
 
-class CacheFaliure extends Failure {}
+class CacheFailure extends Failure {}
+
+class InvalidEmailFailure extends Failure {}
+
+class InvalidPasswordFailure extends Failure {}
+
+class AuthPlatformFailure extends Failure {}

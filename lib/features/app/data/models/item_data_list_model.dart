@@ -111,10 +111,7 @@ extension RemoveEmptyDataLists on Map<String, ItemDataModel> {
   void _removeEmptyOrNullHtmlTagsArrayHtmlItems() {
     for (var item in this.values) {
       item.htmlTags
-          .removeWhere((item) =>
-      item.html == null || item.html
-          .trim()
-          .isEmpty);
+          .removeWhere((item) => item.html == null || item.html.trim().isEmpty);
     }
   }
 

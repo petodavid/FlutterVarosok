@@ -2,9 +2,13 @@ import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:jpt_app/features/app/data/datasources/item_data_list_local_data_source.dart';
+import 'package:jpt_app/features/app/data/repositories/user_repository_impl.dart';
+import 'package:jpt_app/features/app/domain/repositories/user_respository.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_data_by_id.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_list_data.dart';
-import 'package:jpt_app/features/app/presentation/bloc/app_bloc.dart';
+import 'package:jpt_app/features/app/domain/usecases/user.dart';
+import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/bloc.dart';
+import 'package:jpt_app/features/app/presentation/bloc/data_list_bloc/app_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/network/network_info.dart';
@@ -14,6 +18,7 @@ import 'features/app/data/repositories/item_data_list_repository_impl.dart';
 import 'features/app/domain/repositories/item_data_list_repository.dart';
 
 final sl = GetIt.instance;
+
 Future<void> init() async {
   // Bloc
   sl.registerFactory(
@@ -22,9 +27,18 @@ Future<void> init() async {
       getItemDataById: sl(),
     ),
   );
+
+  sl.registerFactory(
+    () => LogInBloc(
+      user: sl(),
+    ),
+  );
+
   // Use cases
   sl.registerLazySingleton(() => GetItemDataList(sl()));
   sl.registerLazySingleton(() => GetItemDataById(sl()));
+  sl.registerLazySingleton(() => UserLogIn(sl()));
+
   // Repository
   sl.registerLazySingleton<ItemListDataRepository>(
     () => ItemListDataRepositoryImpl(
@@ -33,6 +47,8 @@ Future<void> init() async {
       remoteDataSource: sl(),
     ),
   );
+  sl.registerLazySingleton<UserLogInRepository>(
+      () => UserLogInRepositoryImpl());
   // Data sources
   sl.registerLazySingleton<ItemDataListRemoteDataSource>(
     () => ItemDataListRemoteDataSourceImpl(client: sl()),

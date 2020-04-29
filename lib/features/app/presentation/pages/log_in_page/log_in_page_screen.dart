@@ -21,42 +21,35 @@ class _LogInScreenState extends State<LogInScreen>
       backgroundColor:
           ThemeProvider.themeOf(context).data.scaffoldBackgroundColor,
       key: _scaffoldKey,
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overscroll) {
-          overscroll.disallowGlow();
-        },
-        child: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height >= 775.0
-                ? MediaQuery.of(context).size.height
-                : 750.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(bottom: 20.0),
-                  child: ArcBanner(
-                    lottie: Lottie.asset(
-                        'lib/core/lottie/log_in_animation.json',
-                        repeat: true,
-                        reverse: true),
-                    height: 350,
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height >= 775.0
+              ? MediaQuery.of(context).size.height
+              : 750.0,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.0),
+                child: ArcBanner(
+                  lottie: Lottie.asset('lib/core/lottie/log_in_animation.json',
+                      repeat: true, reverse: true),
+                  height: 350,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20.0),
+              ),
+              Container(
+                child: Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.expand(),
+                    child: LogInCard(),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20.0),
-                ),
-                Container(
-                  child: Expanded(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints.expand(),
-                      child: LogInCard(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

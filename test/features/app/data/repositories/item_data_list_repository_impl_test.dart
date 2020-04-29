@@ -123,7 +123,7 @@ void main() {
           final result = await repository.getItemDataList();
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastItemListData());
-          expect(result, equals(Left(CacheFaliure())));
+          expect(result, equals(Left(CacheFailure())));
         },
       );
     });

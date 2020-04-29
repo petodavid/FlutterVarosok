@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jpt_app/core/auth/email_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/core/themes/theme_options.dart';
-import 'package:jpt_app/features/app/presentation/pages/home_list_screen/home_list_screen.dart';
+import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/log_in_bloc.dart';
+import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/log_in_event.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 Widget logInButton(BuildContext context, TextEditingController emailController,
@@ -38,16 +39,8 @@ Widget logInButton(BuildContext context, TextEditingController emailController,
           ),
         ),
         onPressed: () async {
-          if (await User().logInAccount(
-              emailController.text, passwordController.text, context)) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeListScreen(),
-                fullscreenDialog: false,
-              ),
-            );
-          }
+          BlocProvider.of<LogInBloc>(context)
+              .add(UserLogin(emailController.text, passwordController.text));
         }),
   );
 }

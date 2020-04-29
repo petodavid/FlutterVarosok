@@ -12,8 +12,8 @@ Future<bool> savePFDDocumentToLocalStorage(
       : await _saveOnAndroid(urlToSave, fileTitle, context);
 }
 
-Future<bool> _saveOnAndroid(String urlToSave, String fileTitle,
-    BuildContext context) async {
+Future<bool> _saveOnAndroid(
+    String urlToSave, String fileTitle, BuildContext context) async {
   try {
     Directory selectedDirectory = await DirectoryPicker.pick(
         allowFolderCreation: true,

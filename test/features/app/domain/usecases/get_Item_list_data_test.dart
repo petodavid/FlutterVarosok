@@ -28,7 +28,7 @@ void main() {
     when(mockItemListDataRepository.getItemDataList())
         .thenAnswer((_) async => Right(tItemDataListModel));
 
-    final result = await usecase(NoParams());
+    final result = await usecase(NoParamsItemData());
     expect(result, Right(tItemDataListModel));
     verify(mockItemListDataRepository.getItemDataList());
     verifyNoMoreInteractions(mockItemListDataRepository);

@@ -92,7 +92,7 @@ PODS:
     - Flutter
   - path_provider_macos (0.0.1):
     - Flutter
-  - "permission_handler (5.0.0+hotfix.3)":
+  - permission_handler (3.3.0):
     - Flutter
   - PromisesObjC (1.2.8)
   - qr_code_scanner (0.0.2):
@@ -201,7 +201,7 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
-  permission_handler: 4a985b5448897c27fdeadde84f7452520c0e6c58
+  permission_handler: 67637977b227d62d46bfbf524f335f8568de5a73
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   qr_code_scanner: 16107718bdad7d708cdf6a5eacdca24b56cdf471
   shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01

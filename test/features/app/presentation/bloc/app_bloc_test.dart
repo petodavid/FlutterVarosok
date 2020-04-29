@@ -4,9 +4,9 @@ import 'package:jpt_app/core/usecase.dart';
 import 'package:jpt_app/features/app/data/models/item_data_list_model.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_data_by_id.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_list_data.dart';
-import 'package:jpt_app/features/app/presentation/bloc/app_bloc.dart';
-import 'package:jpt_app/features/app/presentation/bloc/app_event.dart';
-import 'package:jpt_app/features/app/presentation/bloc/app_state.dart';
+import 'package:jpt_app/features/app/presentation/bloc/data_list_bloc/app_bloc.dart';
+import 'package:jpt_app/features/app/presentation/bloc/data_list_bloc/app_event.dart';
+import 'package:jpt_app/features/app/presentation/bloc/data_list_bloc/app_state.dart';
 import 'package:mockito/mockito.dart';
 
 class MockGetItemDataList extends Mock implements GetItemDataList {}
@@ -44,7 +44,7 @@ void main() {
             .thenAnswer((_) async => Right(tItemDataListModel));
         bloc.add(GetDataListForItems());
         await untilCalled(mockGetItemDataList(any));
-        verify(mockGetItemDataList(NoParams()));
+        verify(mockGetItemDataList(NoParamsItemData()));
       },
     );
   });

@@ -6,21 +6,20 @@ import 'package:jpt_app/core/usecase.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/domain/repositories/item_data_list_repository.dart';
 
-class GetItemDataById implements UseCase<ItemData, Params> {
+class GetItemDataById implements UseCase<ItemData, ItemDataParams> {
   final ItemListDataRepository repository;
 
   GetItemDataById(this.repository);
 
-  @override
-  Future<Either<Failure, ItemData>> call(Params params) async {
+  Future<Either<Failure, ItemData>> call(ItemDataParams params) async {
     return await repository.getItemDataById(params.id);
   }
 }
 
-class Params extends Equatable {
+class ItemDataParams extends Equatable {
   final String id;
 
-  Params({@required this.id});
+  ItemDataParams({@required this.id});
 
   @override
   List<Object> get props => [id];

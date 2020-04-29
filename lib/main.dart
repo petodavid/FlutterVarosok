@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:jpt_app/core/auth/currest_user.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
 import 'package:jpt_app/core/localization/supported_locales.dart';
+import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/bloc.dart';
 import 'package:jpt_app/features/app/presentation/pages/home_list_screen/home_list_screen.dart';
-import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
+import 'package:jpt_app/features/app/presentation/widgets/adaptive_circular_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 import 'core/localization/app_language.dart';
 import 'core/themes/theme_options.dart';
-import 'features/app/presentation/widgets/adaptive_circular_indicator.dart';
+import 'features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
 import 'injection_container.dart' as di;
+import 'injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,28 +48,31 @@ class JptApp extends StatelessWidget {
             child: MaterialApp(
               locale: model.appLocal,
               supportedLocales: supportedLocales,
-              // These delegates make sure that the localization data for the proper language is loaded
               localizationsDelegates: [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: FutureBuilder<bool>(
-                future: CurrentUser().isSignedIn(),
-                builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                  if (snapshot.hasData) {
-                    return snapshot.data ? HomeListScreen() : LogInScreen();
-                  }
-                  return Center(
-                    child: AdaptiveCircularProgressIndicator(),
-                  );
-                },
-              ),
+              home: buildHome(),
             ),
           );
         }),
       ),
+    );
+  }
+
+  BlocProvider<LogInBloc> buildHome() {
+    return BlocProvider(
+      create: (_) => sl<LogInBloc>(),
+      child: BlocBuilder<LogInBloc, LogInState>(builder: (context, state) {
+        if (state is Unauthorized) {
+          return LogInScreen();
+        } else if (state is Authorized) {
+          return HomeListScreen();
+        } else if (state is LogInError) {}
+        return AdaptiveCircularProgressIndicator();
+      }),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:jpt_app/core/usecase.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_data_by_id.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_list_data.dart';
+import 'package:jpt_app/features/app/presentation/bloc/data_list_bloc/app_event.dart';
 
 import 'bloc.dart';
 
@@ -30,11 +31,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async* {
     if (event is GetForItemDataById) {
       yield Loading();
-      final failureOrItemData = await getItemDataById(Params(id: event.id));
+      final failureOrItemData =
+          await getItemDataById(ItemDataParams(id: event.id));
       yield* _eitherItemDataByIdOrErrorState(failureOrItemData);
     } else if (event is GetDataListForItems) {
       yield Loading();
-      final failureOrItemDataList = await getItemDataList(NoParams());
+      final failureOrItemDataList = await getItemDataList(NoParamsItemData());
       yield* _eitherItemDataListOrErrorState(failureOrItemDataList);
     }
   }
@@ -62,7 +64,7 @@ String _mapFailureToMessage(Failure failure) {
   switch (failure.runtimeType) {
     case ServerFailure:
       return 'Server Error';
-    case CacheFaliure:
+    case CacheFailure:
       return 'Cache Error';
     default:
       return 'Unexpected Error';

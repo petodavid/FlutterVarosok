@@ -34,7 +34,7 @@ class ItemListDataRepositoryImpl implements ItemListDataRepository {
         final localItemListData = await localDataSource.getLastItemListData();
         return Right(localItemListData);
       } on CacheExcepiton {
-        return Left(CacheFaliure());
+        return Left(CacheFailure());
       }
     }
   }
@@ -53,7 +53,7 @@ class ItemListDataRepositoryImpl implements ItemListDataRepository {
         final localItemListData = await localDataSource.getLastItemDataById();
         return Right(localItemListData);
       } on CacheExcepiton {
-        return Left(CacheFaliure());
+        return Left(CacheFailure());
       }
     }
   }
