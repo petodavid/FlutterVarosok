@@ -4,6 +4,10 @@ import 'package:jpt_app/features/app/presentation/widgets/gradient_app_bar_with_
 import 'package:theme_provider/theme_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

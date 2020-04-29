@@ -117,7 +117,7 @@ extension RemoveEmptyDataLists on Map<String, ItemDataModel> {
 
   void _removeEmptyOrNullPdfLinkAndHtmlTagArrays() {
     this.removeWhere((key, value) =>
-    (value.pdfLinks == null || value.pdfLinks.isEmpty) &&
+        (value.pdfLinks == null || value.pdfLinks.isEmpty) &&
         (value.htmlTags == null || value.htmlTags.isEmpty));
   }
 }

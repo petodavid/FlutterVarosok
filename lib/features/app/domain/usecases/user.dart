@@ -5,14 +5,22 @@ import 'package:jpt_app/core/error/failures.dart';
 import 'package:jpt_app/core/usecase.dart';
 import 'package:jpt_app/features/app/domain/repositories/user_respository.dart';
 
-class UserLogIn implements UseCase<bool, UserParams> {
-  final UserLogInRepository repository;
+class User implements UseCase<bool, UserParams> {
+  final UserRepository repository;
 
-  UserLogIn(this.repository);
+  User(this.repository);
 
   Future<Either<Failure, bool>> call(UserParams params) async {
     return await repository.logInWithEmailAndPassword(
         params.email, params.password);
+  }
+
+  Future<bool> isSignedIn() async {
+    return await repository.isSignedIn();
+  }
+
+  void signOut() {
+    repository.signOut();
   }
 }
 

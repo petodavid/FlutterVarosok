@@ -37,7 +37,7 @@ Future<void> init() async {
   // Use cases
   sl.registerLazySingleton(() => GetItemDataList(sl()));
   sl.registerLazySingleton(() => GetItemDataById(sl()));
-  sl.registerLazySingleton(() => UserLogIn(sl()));
+  sl.registerLazySingleton(() => User(sl()));
 
   // Repository
   sl.registerLazySingleton<ItemListDataRepository>(
@@ -47,8 +47,7 @@ Future<void> init() async {
       remoteDataSource: sl(),
     ),
   );
-  sl.registerLazySingleton<UserLogInRepository>(
-      () => UserLogInRepositoryImpl());
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl());
   // Data sources
   sl.registerLazySingleton<ItemDataListRemoteDataSource>(
     () => ItemDataListRemoteDataSourceImpl(client: sl()),

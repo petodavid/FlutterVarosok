@@ -38,9 +38,9 @@ Widget logInButton(BuildContext context, TextEditingController emailController,
                 fontFamily: "WorkSansBold"),
           ),
         ),
-        onPressed: () async {
+        onPressed: () {
           BlocProvider.of<LogInBloc>(context)
-              .add(UserLogin(emailController.text, passwordController.text));
+              .add(UserSignIn(emailController.text, passwordController.text));
         }),
   );
 }
