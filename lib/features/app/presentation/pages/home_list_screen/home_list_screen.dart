@@ -13,6 +13,10 @@ import 'package:jpt_app/injection_container.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 class HomeListScreen extends StatelessWidget {
+  const HomeListScreen({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

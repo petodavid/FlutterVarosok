@@ -7,13 +7,9 @@ import 'package:jpt_app/features/app/domain/repositories/user_respository.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 
-class UserLogInRepositoryImpl implements UserLogInRepository {
+class UserRepositoryImpl implements UserRepository {
   Future<FirebaseUser> _currentUser() async {
     return await auth.currentUser();
-  }
-
-  Future<bool> isSignedIn() async {
-    return (await _currentUser() == null) ? false : true;
   }
 
   @override
@@ -33,12 +29,17 @@ class UserLogInRepositoryImpl implements UserLogInRepository {
     } on InvalidEmailException catch (_) {
       return (Left(InvalidEmailFailure()));
     } on InvalidPasswordException catch (_) {
-      return (Left(InvalidEmailFailure()));
+      return (Left(InvalidPasswordFailure()));
     }
   }
 
   @override
   void signOut() async {
     await auth.signOut();
+  }
+
+  @override
+  Future<bool> isSignedIn() async {
+    return (await _currentUser() == null) ? false : true;
   }
 }

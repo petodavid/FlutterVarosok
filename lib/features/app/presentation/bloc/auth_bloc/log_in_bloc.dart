@@ -6,25 +6,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:jpt_app/core/error/failures.dart';
 import 'package:jpt_app/features/app/domain/usecases/user.dart';
+import 'package:jpt_app/features/app/presentation/widgets/flush_bar_for_local_notification.dart';
+import 'package:jpt_app/main.dart';
 
 import './bloc.dart';
 
 class LogInBloc extends Bloc<LogInEvent, LogInState> {
-  final UserLogIn user;
+  final User user;
 
   LogInBloc({@required this.user});
 
   @override
-  LogInState get initialState => Unauthorized();
+  LogInState get initialState => Empty();
 
   @override
   Stream<LogInState> mapEventToState(
     LogInEvent event,
   ) async* {
-    if (event is UserLogin) {
+    if (event is UserSignIn) {
       final failureOrUser =
           await user(UserParams(email: event.email, password: event.password));
       yield* _eitherUserOrErrorState(failureOrUser);
+    }
+    if (event is UserSignOut) {
+      user.signOut();
+    }
+    if (event is CheckForCurrentUser) {
+      final isLoggedIn = await user.isSignedIn();
+      if (isLoggedIn) {
+        yield Authorized();
+        return;
+      }
+      yield Unauthorized();
     }
   }
 }
@@ -41,10 +54,15 @@ Stream<LogInState> _eitherUserOrErrorState(
 String _mapLogInFailureToMessage(Failure failure) {
   switch (failure.runtimeType) {
     case AuthPlatformFailure:
+      LocalNotificationFlushBar(context: blocContext).showAuthException();
       return 'AuthPlatformFailure';
     case InvalidEmailFailure:
+      LocalNotificationFlushBar(context: blocContext)
+          .showInvalidEmailException();
       return 'InvalidEmailFailure';
     case InvalidPasswordFailure:
+      LocalNotificationFlushBar(context: blocContext)
+          .showInvalidPasswordException();
       return 'InvalidPasswordFailure';
     default:
       return 'Unexpected Error';

@@ -16,6 +16,8 @@ import 'features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
 import 'injection_container.dart' as di;
 import 'injection_container.dart';
 
+BuildContext blocContext;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
@@ -66,11 +68,16 @@ class JptApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => sl<LogInBloc>(),
       child: BlocBuilder<LogInBloc, LogInState>(builder: (context, state) {
-        if (state is Unauthorized) {
+        blocContext = context;
+        if (state is Empty) {
+          BlocProvider.of<LogInBloc>(context).add(CheckForCurrentUser());
+        } else if (state is Unauthorized) {
           return LogInScreen();
         } else if (state is Authorized) {
           return HomeListScreen();
-        } else if (state is LogInError) {}
+        } else if (state is LogInError) {
+          return LogInScreen();
+        }
         return AdaptiveCircularProgressIndicator();
       }),
     );

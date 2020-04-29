@@ -9,14 +9,7 @@ class InitialLogInState extends Equatable {
   List<Object> get props => [];
 }
 
-class Empty extends LogInState {
-  final bool isLoggedin;
-
-  Empty({this.isLoggedin});
-
-  @override
-  List<Object> get props => [isLoggedin];
-}
+class Empty extends LogInState {}
 
 class Unauthorized extends LogInState {}
 

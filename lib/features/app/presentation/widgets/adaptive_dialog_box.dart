@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jpt_app/core/localization/app_language.dart';
 import 'package:jpt_app/core/localization/app_localization.dart';
-import 'package:jpt_app/features/app/data/repositories/user_repository_impl.dart';
-import 'package:jpt_app/features/app/presentation/pages/log_in_page/log_in_page_screen.dart';
+import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/bloc.dart';
+import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/log_in_bloc.dart';
+import 'package:jpt_app/main.dart';
 
 void showAdaptiveDialogBox(BuildContext context) {
   return Platform.isIOS
@@ -79,11 +82,13 @@ void _showMaterialSimpleDialog(BuildContext context) {
 }
 
 void _signOutAndNavigateToLogInScreen(BuildContext context) async {
-  await auth.signOut();
+  BlocProvider.of<LogInBloc>(blocContext).add(UserSignOut());
+  AppLanguage appLanguage = AppLanguage();
+  await appLanguage.fetchLocale();
   Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => LogInScreen(),
+        builder: (context) => JptApp(appLanguage: appLanguage),
         fullscreenDialog: true,
       ),
       (_) => false);

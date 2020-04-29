@@ -11,16 +11,12 @@ class LogInScreen extends StatefulWidget {
   _LogInScreenState createState() => _LogInScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen>
-    with SingleTickerProviderStateMixin {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
+class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
           ThemeProvider.themeOf(context).data.scaffoldBackgroundColor,
-      key: _scaffoldKey,
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,

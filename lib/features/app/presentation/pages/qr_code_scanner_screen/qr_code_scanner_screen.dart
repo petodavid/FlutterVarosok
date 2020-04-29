@@ -17,7 +17,6 @@ import '../../../../../injection_container.dart';
 class QrScannerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return BlocProvider(
       create: (_) => sl<AppBloc>(),
       child: BlocBuilder<AppBloc, AppState>(
