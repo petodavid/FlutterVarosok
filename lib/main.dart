@@ -41,7 +41,7 @@ class JptApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return ThemeProvider(
       saveThemesOnChange: true,
-      loadThemeOnInit: false,
+      loadThemeOnInit: true,
       themes: myThemes,
       child: ChangeNotifierProvider<AppLanguage>(
         create: (_) => appLanguage,
