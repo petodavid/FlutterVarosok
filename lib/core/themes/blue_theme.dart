@@ -20,7 +20,7 @@ AppTheme blueTheme() {
         color: Colors.blueAccent,
       ),
       textTheme: TextTheme(
-        title: GoogleFonts.handlee(
+        headline5: GoogleFonts.handlee(
           color: Colors.black,
         ),
       ),

@@ -18,7 +18,7 @@ AppTheme darkTheme() {
         color: Colors.white,
       ),
       textTheme: TextTheme(
-        title: GoogleFonts.roboto(
+        headline5: GoogleFonts.roboto(
           color: Colors.white,
         ),
       ),

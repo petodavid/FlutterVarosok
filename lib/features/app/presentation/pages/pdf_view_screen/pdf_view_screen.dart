@@ -95,7 +95,7 @@ class PdfViewScreen extends StatelessWidget {
                 style: ThemeProvider.themeOf(context)
                     .data
                     .textTheme
-                    .title
+                    .headline5
                     .copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

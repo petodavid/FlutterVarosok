@@ -18,7 +18,7 @@ ListViewItem _languageItem(BuildContext context) {
   return ListViewItem(
     title: Text(
       AppLocalizations.of(context).translate('languages'),
-      style: ThemeProvider.themeOf(context).data.textTheme.title,
+      style: ThemeProvider.themeOf(context).data.textTheme.headline5,
     ),
     image: FaIcon(
       FontAwesomeIcons.globe,
@@ -36,7 +36,7 @@ ListViewItem _themeItem(BuildContext context) {
   return ListViewItem(
     title: Text(
       AppLocalizations.of(context).translate('themes'),
-      style: ThemeProvider.themeOf(context).data.textTheme.title,
+      style: ThemeProvider.themeOf(context).data.textTheme.headline5,
     ),
     image: FaIcon(
       FontAwesomeIcons.palette,
@@ -57,7 +57,7 @@ ListViewItem _signOutItem(BuildContext context) {
       style: ThemeProvider.themeOf(context)
           .data
           .textTheme
-          .title
+          .headline5
           .copyWith(color: Colors.red),
     ),
     image: FaIcon(
@@ -81,7 +81,7 @@ List<Widget> _getThemeWidgets(BuildContext context) {
         onTap: () => ThemeProvider.controllerOf(context).setTheme(themeItem.id),
         title: Text(
           themeItem.name(context),
-          style: ThemeProvider.themeOf(context).data.textTheme.title,
+          style: ThemeProvider.themeOf(context).data.textTheme.headline5,
         ),
         leading: CircleAvatar(
           child: Container(
@@ -114,7 +114,7 @@ List<Widget> _getLanguageWidgets(BuildContext context) {
           onTap: () => appLanguage.changeLanguage(Locale(locale.languageCode)),
           title: Text(
             locale.fullName,
-            style: ThemeProvider.themeOf(context).data.textTheme.title,
+            style: ThemeProvider.themeOf(context).data.textTheme.headline5,
           ),
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(10),
