@@ -8,7 +8,7 @@ AppBar appBarWithTitle(BuildContext context, String title,
   return AppBar(
     title: Text(
       localized ? AppLocalizations.of(context).translate(title) : title,
-      style: ThemeProvider.themeOf(context).data.textTheme.title.copyWith(
+      style: ThemeProvider.themeOf(context).data.textTheme.headline5.copyWith(
             color: Colors.white,
           ),
     ),

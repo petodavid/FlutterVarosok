@@ -58,9 +58,10 @@ class _QrScanningUiState extends State<QrScanningUi> {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).translate('qr'),
-          style: ThemeProvider.themeOf(context).data.textTheme.title.copyWith(
-                color: Colors.white,
-              ),
+          style:
+              ThemeProvider.themeOf(context).data.textTheme.headline5.copyWith(
+                    color: Colors.white,
+                  ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

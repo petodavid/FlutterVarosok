@@ -9,7 +9,7 @@ AppBar homeListAppBar(BuildContext context) {
   return AppBar(
     title: Text(
       AppLocalizations.of(context).translate('content'),
-      style: ThemeProvider.themeOf(context).data.textTheme.title.copyWith(
+      style: ThemeProvider.themeOf(context).data.textTheme.headline5.copyWith(
             color: Colors.white,
           ),
     ),

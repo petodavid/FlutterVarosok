@@ -18,7 +18,7 @@ AppTheme orangeTheme() {
         color: Color(0xffab6c82),
       ),
       textTheme: TextTheme(
-        title: GoogleFonts.syncopate(
+        headline5: GoogleFonts.syncopate(
           color: Colors.black,
         ),
       ),

@@ -23,7 +23,7 @@ ListViewItem _getPdflItem(BuildContext context, PdfLink pdfLink) {
   return ListViewItem(
     title: Text(
       pdfLink.title,
-      style: ThemeProvider.themeOf(context).data.textTheme.title,
+      style: ThemeProvider.themeOf(context).data.textTheme.headline5,
     ),
     image: FaIcon(
       FontAwesomeIcons.solidFilePdf,
@@ -47,7 +47,7 @@ ListViewItem _getHtmlItem(BuildContext context, HtmlTag htmlTag) {
   return ListViewItem(
     title: Text(
       htmlTag.title,
-      style: ThemeProvider.themeOf(context).data.textTheme.title,
+      style: ThemeProvider.themeOf(context).data.textTheme.headline5,
     ),
     image: FaIcon(
       FontAwesomeIcons.html5,
