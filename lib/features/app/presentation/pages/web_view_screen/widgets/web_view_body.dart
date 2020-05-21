@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewBody extends StatelessWidget {
-  final String html;
+  final String siteAddress;
 
-  WebViewBody({@required this.html});
+  WebViewBody({@required this.siteAddress});
 
   @override
   Widget build(BuildContext context) {
     return WebView(
-      initialUrl: Uri.dataFromString(html, mimeType: 'text/html').toString(),
+      initialUrl: siteAddress,
       javascriptMode: JavascriptMode.unrestricted,
     );
   }

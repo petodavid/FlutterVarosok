@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSLocationWhenInUseUsageDescription</key>
+	<string>Mapbox uses location</string>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoicGV0b2RhdmlkIiwiYSI6ImNqeHVjYTlsdDBzeW4zY3BqM2Z5ZXRuc3MifQ.x06AP6vnw7fplQ92rF4h2A</string>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>UIFileSharingEnabled</key>

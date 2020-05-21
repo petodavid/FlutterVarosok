@@ -82,6 +82,13 @@ PODS:
   - GoogleUtilities/UserDefaults (6.5.1):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.3.1)
+  - Mapbox-iOS-SDK (5.5.1)
+  - mapbox_gl (0.0.1):
+    - Flutter
+    - Mapbox-iOS-SDK (~> 5.5.0)
+    - MapboxAnnotationExtension (~> 0.0.1-beta.1)
+  - MapboxAnnotationExtension (0.0.1-beta.1):
+    - Mapbox-iOS-SDK (~> 5.2)
   - MTBBarcodeScanner (5.0.11)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -116,6 +123,7 @@ DEPENDENCIES:
   - firebase_core_web (from `.symlinks/plugins/firebase_core_web/ios`)
   - Flutter (from `Flutter`)
   - flutter_device_locale (from `.symlinks/plugins/flutter_device_locale/ios`)
+  - mapbox_gl (from `.symlinks/plugins/mapbox_gl/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
@@ -141,6 +149,8 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - GTMSessionFetcher
+    - Mapbox-iOS-SDK
+    - MapboxAnnotationExtension
     - MTBBarcodeScanner
     - nanopb
     - PromisesObjC
@@ -158,6 +168,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_device_locale:
     :path: ".symlinks/plugins/flutter_device_locale/ios"
+  mapbox_gl:
+    :path: ".symlinks/plugins/mapbox_gl/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   path_provider_macos:
@@ -197,6 +209,9 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
   GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  Mapbox-iOS-SDK: 051d78eb8beb4bd0601212a18ea3ba8608bae32f
+  mapbox_gl: da39c0c519f50d83f3483dc37887acb9cf61f5fa
+  MapboxAnnotationExtension: d66de5561562c9d940153c0135725e671407b781
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
@@ -210,6 +225,6 @@ SPEC CHECKSUMS:
   simple_pdf_viewer: 983f68fcfff9e4bacbc07a7ddf86efe4bf3fec11
   webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: 474313b5a4798cc74babb44e36bdf3bbbea9a318
 
 COCOAPODS: 1.8.4

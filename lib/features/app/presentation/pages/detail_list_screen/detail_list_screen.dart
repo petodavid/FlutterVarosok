@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jpt_app/features/app/domain/entities/item_list_data.dart';
 import 'package:jpt_app/features/app/presentation/pages/detail_list_screen/widgets/detaill_list_items.dart';
+import 'package:jpt_app/features/app/presentation/pages/detail_list_screen/widgets/map_floating_action_button.dart';
+import 'package:jpt_app/features/app/presentation/pages/map_screen/map_screen.dart';
 import 'package:jpt_app/features/app/presentation/widgets/gradient_app_bar_with_title.dart';
 import 'package:theme_provider/theme_provider.dart';
 
@@ -13,6 +16,10 @@ class DetailListScreen extends StatelessWidget {
     final detailListScreenItems = getDetailScreenItemsList(context, itemData);
     return Scaffold(
       appBar: appBarWithTitle(context, itemData.title),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.all(10),
+        child: MapFloatingActionButton(cityName: itemData.title),
+      ),
       backgroundColor:
           ThemeProvider.themeOf(context).data.scaffoldBackgroundColor,
       body: ListView.separated(

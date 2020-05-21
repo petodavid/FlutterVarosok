@@ -6,6 +6,7 @@ import 'package:jpt_app/features/app/data/repositories/user_repository_impl.dart
 import 'package:jpt_app/features/app/domain/repositories/user_respository.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_data_by_id.dart';
 import 'package:jpt_app/features/app/domain/usecases/get_item_list_data.dart';
+import 'package:jpt_app/features/app/domain/usecases/map.dart';
 import 'package:jpt_app/features/app/domain/usecases/user.dart';
 import 'package:jpt_app/features/app/presentation/bloc/auth_bloc/bloc.dart';
 import 'package:jpt_app/features/app/presentation/bloc/data_list_bloc/app_bloc.dart';
@@ -15,7 +16,9 @@ import 'core/network/network_info.dart';
 import 'core/util/input_validation.dart';
 import 'features/app/data/datasources/item_data_list_remote_data_source.dart';
 import 'features/app/data/repositories/item_data_list_repository_impl.dart';
+import 'features/app/data/repositories/map_repository_impl.dart';
 import 'features/app/domain/repositories/item_data_list_repository.dart';
+import 'features/app/domain/repositories/map_repository.dart';
 
 final sl = GetIt.instance;
 
@@ -38,6 +41,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetItemDataList(sl()));
   sl.registerLazySingleton(() => GetItemDataById(sl()));
   sl.registerLazySingleton(() => User(sl()));
+  sl.registerLazySingleton(() => LatLongForMap(sl()));
 
   // Repository
   sl.registerLazySingleton<ItemListDataRepository>(
@@ -47,6 +51,10 @@ Future<void> init() async {
       remoteDataSource: sl(),
     ),
   );
+  sl.registerLazySingleton<LatLongForMapRepository>(
+    () => LatLongForMapImpl(),
+  );
+
   sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl());
   // Data sources
   sl.registerLazySingleton<ItemDataListRemoteDataSource>(

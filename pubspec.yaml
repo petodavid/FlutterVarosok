@@ -46,6 +46,8 @@ dependencies:
   flag: ^1.0.3
   google_fonts: ^0.6.2
   directory_picker: ^1.0.0
+  mapbox_gl: ^0.0.5
+  mapbox_search: ^2.0.0
 
 
 

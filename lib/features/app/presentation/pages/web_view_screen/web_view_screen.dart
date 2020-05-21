@@ -12,7 +12,7 @@ class WebViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarWithTitle(context, title),
-      body: WebViewBody(html: html),
+      body: WebViewBody(siteAddress: html),
     );
   }
 }

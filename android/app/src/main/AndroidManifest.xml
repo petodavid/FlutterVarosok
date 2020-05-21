@@ -15,6 +15,7 @@
             android:name="io.flutter.app.FlutterApplication"
             android:label="Jpt"
             android:icon="@mipmap/ic_launcher">
+
         <activity
                 android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -32,5 +33,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.mapbox.token" android:value="pk.eyJ1IjoicGV0b2RhdmlkIiwiYSI6ImNrM3E2MW03czA5cWIzY29heWdhNXVqdTIifQ.5NWTcSFCokiZ-ykifqRX0Q" />
     </application>
 </manifest>
